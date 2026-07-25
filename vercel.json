@@ -11,9 +11,5 @@
       "src": "/(.*)",
       "dest": "index.html"
     }
-  ],
-  "env": {
-    "VERCEL_ENV": "production"
-  },
-  "public": true
+  ]
 }
