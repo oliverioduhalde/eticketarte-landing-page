@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TicketArte - Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 60px 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .status {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 40px 0;
+            border-radius: 4px;
+        }
+
+        .status h3 {
+            color: #2e7d32;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            header .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin-left: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">🎫 E-TicketArte</div>
+            <nav>
+                <a href="#features">Características</a>
+                <a href="#contact">Contacto</a>
+                <a href="https://app.eticketarte.com">Ingresar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>¡Bienvenido a E-TicketArte!</h1>
+            <p>La plataforma más sencilla para gestionar tickets de eventos artísticos</p>
+            <button class="cta-button" onclick="alert('¡Próximamente disponible!')">Comenzar Ahora</button>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="status">
+                <h3>✨ Hello World - Versión 1.0</h3>
+                <p>Este es el primer commit de la landing page de E-TicketArte. Estamos construyendo algo increíble para la comunidad artística.</p>
+                <p><strong>Actualizado:</strong> 25 de Julio, 2026</p>
+            </div>
+
+            <h2 id="features">Características Principales</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎪 Gestión de Eventos</h3>
+                    <p>Crea y administra tus eventos artísticos de forma sencilla. Define fechas, ubicaciones y capacidad.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🎟️ Sistema de Tickets</h3>
+                    <p>Genera tickets digitales con código QR. Tus visitantes pueden acceder fácilmente desde sus teléfonos.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📊 Analytics en Tiempo Real</h3>
+                    <p>Monitorea ventas, asistencia y engagement de tus eventos con dashboards intuitivos.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>💳 Pagos Seguros</h3>
+                    <p>Integración con múltiples métodos de pago. Tus transacciones están protegidas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📱 Experiencia Mobile</h3>
+                    <p>Diseño responsive perfecto en cualquier dispositivo. Tus clientes tienen la mejor experiencia.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🔗 Integraciones</h3>
+                    <p>Conecta con tus redes sociales, email marketing y herramientas favoritas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 E-TicketArte. Todos los derechos reservados.</p>
+            <p id="contact">Email: <a href="mailto:oliverio.duhalde@gmail.com" style="color: #667eea;">oliverio.duhalde@gmail.com</a></p>
+            <p>Dominio: <strong>www.eticketarte.com</strong></p>
+        </div>
+    </footer>
+</body>
+</html>
