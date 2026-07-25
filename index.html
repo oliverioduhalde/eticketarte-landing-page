@@ -12,11 +12,12 @@
         }
 
         :root {
-            --primary: #1a1a1a;
+            --primary: #000000;
             --secondary: #ffffff;
             --accent: #ff6b35;
-            --light: #f5f5f5;
             --text: #2c2c2c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #666666;
         }
 
         html {
@@ -24,428 +25,330 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Courier New', 'Courier', monospace;
             line-height: 1.6;
             color: var(--text);
             background: var(--secondary);
+            letter-spacing: 0.5px;
         }
 
         /* Header */
         header {
             background: var(--primary);
             color: var(--secondary);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        nav a {
-            color: var(--secondary);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 14px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
+            letter-spacing: 3px;
         }
 
         /* Hero */
         .hero {
-            margin-top: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, #2a2a2a 100%);
-            color: var(--secondary);
-            padding: 80px 40px;
+            padding: 60px 40px;
             text-align: center;
-            min-height: calc(100vh - 60px);
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-            overflow: hidden;
+            background: var(--secondary);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="none" stroke="rgba(255,107,53,0.1)" stroke-width="0.5" x="0" y="0" width="100" height="100"/></svg>');
-            background-size: 50px 50px;
-            opacity: 0.5;
-            pointer-events: none;
+        .hero-title {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: var(--text);
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        .hero-diagram {
+            background: var(--light-gray);
+            border: 2px solid var(--primary);
+            padding: 40px;
+            margin: 40px 0;
+            font-size: 13px;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .diagram-line {
+            margin: 10px 0;
+            color: var(--primary);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Main content */
+        .content {
             max-width: 900px;
             margin: 0 auto;
-            animation: slideUp 1s ease-out;
+            padding: 60px 40px;
         }
 
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            line-height: 1.2;
+        .section {
+            margin-bottom: 80px;
         }
 
-        .hero .subtitle {
-            font-size: 28px;
-            color: var(--accent);
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
             margin-bottom: 30px;
-            font-weight: 300;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--light-gray);
+            border: 2px solid var(--primary);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.7;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            border-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .card:hover .card-icon {
+            color: var(--secondary);
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 13px;
             letter-spacing: 1px;
         }
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
+        /* CTA Buttons */
+        .cta-container {
             display: flex;
             gap: 20px;
             justify-content: center;
+            margin: 40px 0;
             flex-wrap: wrap;
-            margin-bottom: 60px;
         }
 
         .btn {
             padding: 15px 40px;
-            border: none;
-            border-radius: 2px;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: bold;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary);
             cursor: pointer;
             transition: all 0.3s;
+            font-family: 'Courier New', monospace;
             text-decoration: none;
             display: inline-block;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .btn-primary {
             background: var(--accent);
             color: var(--secondary);
+            border-color: var(--accent);
         }
 
         .btn-primary:hover {
             background: #ff5722;
+            border-color: #ff5722;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--accent);
+            color: var(--primary);
+            border-color: var(--primary);
         }
 
         .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--secondary);
-        }
-
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-            padding-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: bold;
-            color: var(--accent);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        /* Gallery */
-        .gallery {
-            padding: 80px 40px;
-            background: var(--light);
-        }
-
-        .gallery h2 {
-            font-size: 48px;
-            text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            background: var(--secondary);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-caption {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .gallery-caption h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .gallery-caption p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Use Cases */
-        .use-cases {
-            padding: 80px 40px;
-            background: var(--secondary);
-        }
-
-        .use-cases h2 {
-            font-size: 48px;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .use-cases-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 60px;
-        }
-
-        .use-cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .use-case-card {
-            background: var(--light);
-            padding: 40px 30px;
-            border-radius: 4px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .use-case-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .use-case-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .use-case-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .use-case-card p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.7;
-        }
-
-        /* Features */
-        .features {
-            padding: 80px 40px;
             background: var(--primary);
             color: var(--secondary);
         }
 
-        .features h2 {
-            font-size: 48px;
-            text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
+        /* Features list */
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
         }
 
-        .features-grid {
+        .features-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .features-list li:before {
+            content: "▸ ";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Contexts grid */
+        .contexts {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        .feature {
-            display: flex;
-            flex-direction: column;
+        .context-item {
+            background: var(--light-gray);
+            border: 2px solid var(--accent);
+            padding: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text);
         }
 
-        .feature-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .context-emoji {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .context-name {
+            font-weight: bold;
             color: var(--accent);
         }
 
-        .feature-description {
-            font-size: 16px;
-            line-height: 1.8;
-            opacity: 0.95;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 40px;
-            background: linear-gradient(135deg, var(--accent) 0%, #ff5722 100%);
+        /* Specs */
+        .specs {
+            background: var(--primary);
             color: var(--secondary);
+            padding: 40px;
+            margin: 40px 0;
+            border: 2px solid var(--accent);
+        }
+
+        .specs h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+        }
+
+        .spec-label {
+            font-weight: bold;
+        }
+
+        .spec-value {
+            color: var(--accent);
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 60px 40px;
             text-align: center;
+            margin-top: 60px;
         }
 
-        .cta-section h2 {
-            font-size: 48px;
+        .footer-cta h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .footer-cta p {
+            font-size: 13px;
             margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .cta-section p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            max-width: 800px;
+            line-height: 1.8;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .footer-cta a {
+            color: var(--secondary);
+            text-decoration: none;
         }
 
         /* Footer */
         footer {
             background: var(--primary);
             color: var(--secondary);
-            padding: 40px;
+            padding: 30px;
             text-align: center;
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 11px;
+            border-top: 2px solid var(--accent);
+            letter-spacing: 1px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin-left: 15px;
-                font-size: 12px;
+                padding: 20px;
             }
 
             .hero {
                 padding: 40px 20px;
-                margin-top: 80px;
+                min-height: auto;
             }
 
-            .hero h1 {
-                font-size: 36px;
+            .hero-title {
+                font-size: 24px;
             }
 
-            .hero .subtitle {
+            .hero-diagram {
+                padding: 20px;
+                font-size: 11px;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .section-title {
                 font-size: 18px;
             }
 
-            .hero p {
-                font-size: 16px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .gallery-grid,
-            .use-cases-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
+            .cta-container {
+                flex-direction: column;
             }
 
             .btn {
@@ -456,139 +359,143 @@
 </head>
 <body>
     <header>
-        <div class="logo">E-TICKETARTE</div>
-        <nav>
-            <a href="#gallery">Galería</a>
-            <a href="#use-cases">Contextos</a>
-            <a href="#features">Características</a>
-            <a href="#contact">Contacto</a>
-        </nav>
+        <div class="logo">ETICKETARTE</div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Máquinas Sensibles de Bolsillo</h1>
-            <div class="subtitle">Cuando una transacción se convierte en obra</div>
-            <p>E-TicketArte es un sistema de autoría abierta que transforma cualquier punto de acceso —una boletería, un mostrador, una entrada— en un laboratorio de arte generativo colaborativo. Cada visitante que presiona un botón se convierte en parte de la historia: una obra única e irrepetible impresa en segundos sobre papel térmico.</p>
-            
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Colaborar Ahora</a>
-                <a href="#features" class="btn btn-secondary">Conocer Más</a>
-            </div>
+        <h1 class="hero-title">MÁQUINAS SENSIBLES<br>DE BOLSILLO</h1>
+        
+        <div class="hero-diagram">
+            ┌──────────────────┐<br>
+            │ <span class="highlight">BOTÓN</span>          │<br>
+            └────────┬─────────┘<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;┌───┴───┐<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;│ <span class="highlight">ALGORITMO</span> │<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;└───┬───┘<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+            &nbsp;&nbsp;┌────┴─────┐<br>
+            &nbsp;&nbsp;│ <span class="highlight">IMPRESORA</span> │<br>
+            &nbsp;&nbsp;└───────────┘<br>
+            <br>
+            OBRA ÚNICA ✦ PAPEL EFÍMERO ✦ AUTORÍA ABIERTA
+        </div>
 
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-number">203 DPI</span>
-                    <span class="stat-label">Resolución Térmica</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">∞</span>
-                    <span class="stat-label">Variaciones Posibles</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">1 segundo</span>
-                    <span class="stat-label">Tiempo de Creación</span>
-                </div>
-            </div>
+        <p style="font-size: 13px; max-width: 600px; line-height: 1.8; margin-bottom: 30px;">
+            Una transacción se convierte en obra. Un espectador presiona un botón. El sistema selecciona un prompt, 
+            un algoritmo, una regla generativa. En segundos, una pieza única e irrepetible se imprime sobre papel térmico. 
+            Autoría compartida entre inteligencia artificial y artistas. Destinada a desaparecer.
+        </p>
+
+        <div class="cta-container">
+            <a href="#contact" class="btn btn-primary">Colaborar Ahora</a>
+            <a href="#features" class="btn btn-secondary">Conocer Más</a>
         </div>
     </section>
 
-    <section class="gallery" id="gallery">
-        <h2>La Obra en Acción</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Sistema E-TicketArte" style="background: #f0f0f0;">
-                <div class="gallery-caption">
-                    <h3>Sistema Autónomo</h3>
-                    <p>Raspberry Pi + Impresora Térmica + Botón. Todo lo necesario para co-crear obras entre humanos e IA.</p>
+    <section class="content">
+        <div class="section" id="features">
+            <h2 class="section-title">◆ CARACTERÍSTICAS TÉCNICAS</h2>
+            <ul class="features-list">
+                <li><strong>Modular y Replicable:</strong> Construcción de bajo costo. Raspberry Pi, Python, impresora térmica. Cualquier institución puede armar su propia copia.</li>
+                <li><strong>Autoría Abierta:</strong> Artistas, investigadores, docentes cargan sus propios prompts y algoritmos. El sistema no jerarquiza autorías.</li>
+                <li><strong>Offline o Conectado:</strong> Funciona autónomo sin internet, o conectado a APIs de IA generativa según necesidad.</li>
+                <li><strong>203 DPI de Precisión:</strong> Límite como potencia. Dos colores. Síntesis visual absoluta. Haikus gráficos.</li>
+                <li><strong>Efimeridad Conceptual:</strong> Papel térmico condenado a desvanecerse. Promueve atesoramiento de instantes.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">◆ CONTEXTOS DE ACTIVACIÓN</h2>
+            <p style="margin-bottom: 20px; font-size: 12px;">E-TicketArte funciona en cualquier punto donde una transacción pueda convertirse en experiencia artística:</p>
+            <div class="contexts">
+                <div class="context-item">
+                    <div class="context-emoji">🎭</div>
+                    <div class="context-name">TEATROS</div>
+                    <p style="font-size: 10px; margin-top: 5px;">Boletería como laboratorio</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🏛️</div>
+                    <div class="context-name">MUSEOS</div>
+                    <p style="font-size: 10px; margin-top: 5px;">Entrada como obra</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">📚</div>
+                    <div class="context-name">LIBRERÍAS</div>
+                    <p style="font-size: 10px; margin-top: 5px;">Compra con arte</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🎓</div>
+                    <div class="context-name">UNIVERSIDADES</div>
+                    <p style="font-size: 10px; margin-top: 5px;">Herramienta pedagógica</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🍽️</div>
+                    <div class="context-name">RESTAURANTES</div>
+                    <p style="font-size: 10px; margin-top: 5px;">Recibo que es obra</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🌍</div>
+                    <div class="context-name">ESPACIOS PÚBLICOS</div>
+                    <p style="font-size: 10px; margin-top: 5px;">Arte en tránsito</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Tickets Generados" style="background: #f0f0f0;">
-                <div class="gallery-caption">
-                    <h3>Obras Efímeras</h3>
-                    <p>Cada impresión es única e irrepetible. El papel térmico se desvanece, pero el recuerdo permanece.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">◆ ESPECIFICACIONES</h2>
+            <div class="specs">
+                <h3>HARDWARE Y SOFTWARE</h3>
+                <div class="spec-item">
+                    <span class="spec-label">Controlador</span>
+                    <span class="spec-value">Raspberry Pi 4</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Programación</span>
+                    <span class="spec-value">Python 3.x</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Impresora</span>
+                    <span class="spec-value">Térmica USB · 203 DPI</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Interacción</span>
+                    <span class="spec-value">1 botón físico</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Generación</span>
+                    <span class="spec-value">API o algoritmo local</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Salida</span>
+                    <span class="spec-value">Obra única · Papel efímero</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="use-cases" id="use-cases">
-        <h2>Contextos de Activación</h2>
-        <p class="use-cases-subtitle">E-TicketArte funciona en cualquier punto donde una transacción pueda convertirse en experiencia artística</p>
-        <div class="use-cases-grid">
-            <div class="use-case-card">
-                <div class="use-case-icon">🎭</div>
-                <h3>Teatros y Festivales</h3>
-                <p>Transforma la boletería en un laboratorio de arte. Cada entrada es también una obra generativa.</p>
-            </div>
-            <div class="use-case-card">
-                <div class="use-case-icon">🏛️</div>
-                <h3>Museos y Galerías</h3>
-                <p>Complementa exposiciones con una capa interactiva de creación colaborativa entre artistas y visitantes.</p>
-            </div>
-            <div class="use-case-card">
-                <div class="use-case-icon">📚</div>
-                <h3>Librerías y Bibliotecas</h3>
-                <p>Cada compra o préstamo incluye una obra de arte impresa. Literatura y arte generativo convergen.</p>
-            </div>
-            <div class="use-case-card">
-                <div class="use-case-icon">🎓</div>
-                <h3>Universidades y Laboratorios</h3>
-                <p>Herramienta pedagógica para explorar IA, programación creativa y autoría compartida.</p>
-            </div>
-            <div class="use-case-card">
-                <div class="use-case-icon">🍽️</div>
-                <h3>Restaurantes y Espacios</h3>
-                <p>Cada cliente recibe una pieza única. El arte acompaña la experiencia cotidiana.</p>
-            </div>
-            <div class="use-case-card">
-                <div class="use-case-icon">🌍</div>
-                <h3>Activaciones Públicas</h3>
-                <p>Instalaciones en espacios de tránsito: estaciones, mercados, encuentros culturales.</p>
-            </div>
+        <div class="section">
+            <h2 class="section-title">◆ DISCIPLINAS PARTICIPANTES</h2>
+            <p style="font-size: 12px; margin-bottom: 20px; line-height: 1.8;">
+                Poesía y literatura · Artes visuales · Música y composición · Arquitectura especulativa · Bioarte · 
+                Performance y acción · Danza · Fotografía expandida · Gastronomía conceptual · Filosofía · Diseño gráfico · 
+                Comunicación y nuevos medios.
+            </p>
         </div>
     </section>
 
-    <section class="features" id="features">
-        <h2>Características Técnicas</h2>
-        <div class="features-grid">
-            <div class="feature">
-                <div class="feature-title">Modular y Replicable</div>
-                <div class="feature-description">Construcción de bajo costo pensada para que cada institución pueda replicar, modificar y adaptar el sistema a sus necesidades específicas.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Autoría Abierta</div>
-                <div class="feature-description">Cualquier artista, investigador o participante puede cargar sus propios prompts, algoritmos o reglas generativas al sistema.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Offline o Conectado</div>
-                <div class="feature-description">Funciona de forma autónoma sin internet, o conectado a APIs de IA generativa según la configuración.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Límite como Potencia</div>
-                <div class="feature-description">203 DPI y dos colores fuerzan síntesis visual absoluta: haikus gráficos, poesía concreta, esencialidad.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Efimeridad Conceptual</div>
-                <div class="feature-description">El papel térmico se desvanece. Cada obra está condenada a desaparecer, promoviendo atesoramiento y memoria.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Democracia de Autoría</div>
-                <div class="feature-description">Todas las participaciones, independientemente de disciplina, se igualan bajo un mismo formato material y temporal.</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section" id="contact">
-        <h2>Únete al Laboratorio</h2>
-        <p>Artistas, músicos, poetas, investigadores, curadores, instituciones culturales: E-TicketArte es una plataforma abierta. Si tu institución, festival o proyecto tiene un punto de acceso, nosotros llevamos el sistema.</p>
-        <a href="mailto:oliverio.duhalde@gmail.com" class="btn btn-secondary">Escribir un Email</a>
+    <section class="footer-cta" id="contact">
+        <h2>ÚNETE AL LABORATORIO</h2>
+        <p>
+            Artistas, investigadores, curadores, instituciones culturales. E-TicketArte es una plataforma abierta. 
+            Si tu institución tiene un punto de acceso —una boletería, un mostrador, una entrada— 
+            nosotros llevamos el sistema.
+        </p>
+        <a href="mailto:oliverio.duhalde@gmail.com" class="btn btn-secondary">ESCRIBIR UN EMAIL</a>
     </section>
 
     <footer>
-        <p>E-TicketArte © 2026 | Concepto y dirección: <a href="https://github.com/oliverioduhalde">Oliverio Duhalde</a></p>
-        <p style="margin-top: 10px; opacity: 0.7;">Máquinas Sensibles de Bolsillo — Cuando el arte se completa con quienes lo habitan.</p>
+        E-TICKETARTE © 2026 | Concepto: <a href="https://github.com/oliverioduhalde">Oliverio Duhalde</a><br>
+        Máquinas Sensibles de Bolsillo — Cuando el arte se completa con quienes lo habitan
     </footer>
 </body>
 </html>
