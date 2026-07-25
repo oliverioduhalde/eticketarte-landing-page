@@ -17,16 +17,13 @@
             --accent: #ff6b35;
             --text: #2c2c2c;
             --light-gray: #f5f5f5;
-            --dark-gray: #666666;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Courier New', 'Courier', monospace;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text);
             background: var(--secondary);
             letter-spacing: 0.5px;
@@ -36,66 +33,88 @@
         header {
             background: var(--primary);
             color: var(--secondary);
-            padding: 30px 40px;
+            padding: 40px;
             text-align: center;
             border-bottom: 3px solid var(--accent);
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
         /* Hero */
         .hero {
-            padding: 60px 40px;
+            padding: 80px 40px;
             text-align: center;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             background: var(--secondary);
         }
 
         .hero-title {
-            font-size: 36px;
+            font-size: 40px;
             font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            line-height: 1.4;
             color: var(--text);
         }
 
-        .hero-diagram {
-            background: var(--light-gray);
-            border: 2px solid var(--primary);
-            padding: 40px;
-            margin: 40px 0;
-            font-size: 13px;
-            line-height: 1.8;
-            text-align: center;
-            max-width: 600px;
+        /* Diagrama */
+        .diagram-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 60px 0;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
-            color: var(--primary);
+        }
+
+        .diagram-visual {
+            background: var(--light-gray);
+            border: 3px solid var(--primary);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .diagram-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .diagram-text {
+            background: var(--light-gray);
+            border: 3px solid var(--primary);
+            padding: 40px;
+            font-size: 12px;
+            line-height: 2;
+            text-align: center;
             font-family: 'Courier New', monospace;
-            overflow-x: auto;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .diagram-line {
-            margin: 10px 0;
-            color: var(--primary);
+            margin: 15px 0;
+            letter-spacing: 1px;
         }
 
         .highlight {
             color: var(--accent);
             font-weight: bold;
+            font-size: 13px;
         }
 
         /* Main content */
         .content {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 60px 40px;
         }
@@ -105,69 +124,147 @@
         }
 
         .section-title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             letter-spacing: 2px;
             margin-bottom: 30px;
             color: var(--accent);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 15px;
         }
 
-        .cards-grid {
+        .section-intro {
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        /* Gallery de imágenes */
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            border: 3px solid var(--primary);
+            overflow: hidden;
+            background: white;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-align: center;
+            background: var(--light-gray);
+            color: var(--accent);
+        }
+
+        /* Features */
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .features-list li {
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 15px;
+            background: var(--light-gray);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .features-list strong {
+            color: var(--accent);
+        }
+
+        /* Contexts */
+        .contexts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
 
-        .card {
+        .context-item {
             background: var(--light-gray);
-            border: 2px solid var(--primary);
-            padding: 30px 20px;
+            border: 2px solid var(--accent);
+            padding: 25px;
             text-align: center;
-            font-size: 12px;
-            line-height: 1.7;
-            transition: all 0.3s;
+            font-size: 11px;
         }
 
-        .card:hover {
-            background: var(--accent);
-            color: var(--secondary);
-            border-color: var(--accent);
+        .context-emoji {
+            font-size: 36px;
+            margin-bottom: 12px;
         }
 
-        .card-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-
-        .card:hover .card-icon {
-            color: var(--secondary);
-        }
-
-        .card-title {
+        .context-name {
             font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 13px;
+            color: var(--accent);
+            font-size: 12px;
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
-        /* CTA Buttons */
+        /* Specs */
+        .specs {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 40px;
+            margin: 40px 0;
+            border: 3px solid var(--accent);
+        }
+
+        .specs h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+        }
+
+        .spec-label {
+            font-weight: bold;
+        }
+
+        .spec-value {
+            color: var(--accent);
+        }
+
+        /* CTA */
         .cta-container {
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin: 40px 0;
+            margin: 50px 0;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 16px 50px;
             font-size: 12px;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             border: 2px solid var(--primary);
             cursor: pointer;
             transition: all 0.3s;
@@ -186,8 +283,8 @@
         .btn-primary:hover {
             background: #ff5722;
             border-color: #ff5722;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
         }
 
         .btn-secondary {
@@ -201,159 +298,62 @@
             color: var(--secondary);
         }
 
-        /* Features list */
-        .features-list {
-            list-style: none;
-            margin: 30px 0;
-        }
-
-        .features-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .features-list li:before {
-            content: "▸ ";
-            color: var(--accent);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* Contexts grid */
-        .contexts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .context-item {
-            background: var(--light-gray);
-            border: 2px solid var(--accent);
-            padding: 20px;
-            text-align: center;
-            font-size: 11px;
-            color: var(--text);
-        }
-
-        .context-emoji {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .context-name {
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        /* Specs */
-        .specs {
-            background: var(--primary);
-            color: var(--secondary);
-            padding: 40px;
-            margin: 40px 0;
-            border: 2px solid var(--accent);
-        }
-
-        .specs h3 {
-            color: var(--accent);
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 12px;
-        }
-
-        .spec-label {
-            font-weight: bold;
-        }
-
-        .spec-value {
-            color: var(--accent);
-        }
-
         /* Footer CTA */
         .footer-cta {
             background: var(--accent);
             color: var(--secondary);
-            padding: 60px 40px;
+            padding: 80px 40px;
             text-align: center;
-            margin-top: 60px;
+            margin-top: 80px;
         }
 
         .footer-cta h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            font-size: 32px;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            font-weight: bold;
         }
 
         .footer-cta p {
             font-size: 13px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.9;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        .footer-cta a {
-            color: var(--secondary);
-            text-decoration: none;
         }
 
         /* Footer */
         footer {
             background: var(--primary);
             color: var(--secondary);
-            padding: 30px;
+            padding: 40px;
             text-align: center;
             font-size: 11px;
-            border-top: 2px solid var(--accent);
+            border-top: 3px solid var(--accent);
             letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            header {
-                padding: 20px;
-            }
-
-            .hero {
-                padding: 40px 20px;
-                min-height: auto;
-            }
-
-            .hero-title {
-                font-size: 24px;
-            }
-
-            .hero-diagram {
-                padding: 20px;
-                font-size: 11px;
-            }
-
-            .content {
-                padding: 40px 20px;
-            }
-
-            .section-title {
-                font-size: 18px;
-            }
-
-            .cta-container {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
+            header { padding: 30px; }
+            .logo { font-size: 24px; letter-spacing: 2px; }
+            .hero { padding: 50px 20px; }
+            .hero-title { font-size: 26px; letter-spacing: 2px; }
+            .diagram-section { grid-template-columns: 1fr; gap: 20px; }
+            .content { padding: 40px 20px; }
+            .section-title { font-size: 20px; }
+            .gallery { grid-template-columns: 1fr; }
+            .contexts { grid-template-columns: repeat(2, 1fr); }
+            .cta-container { flex-direction: column; }
+            .btn { width: 100%; }
+            .footer-cta { padding: 50px 20px; }
         }
     </style>
 </head>
@@ -363,139 +363,204 @@
     </header>
 
     <section class="hero">
-        <h1 class="hero-title">MÁQUINAS SENSIBLES<br>DE BOLSILLO</h1>
-        
-        <div class="hero-diagram">
-            ┌──────────────────┐<br>
-            │ <span class="highlight">BOTÓN</span>          │<br>
-            └────────┬─────────┘<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;┌───┴───┐<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;│ <span class="highlight">ALGORITMO</span> │<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;└───┬───┘<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-            &nbsp;&nbsp;┌────┴─────┐<br>
-            &nbsp;&nbsp;│ <span class="highlight">IMPRESORA</span> │<br>
-            &nbsp;&nbsp;└───────────┘<br>
-            <br>
-            OBRA ÚNICA ✦ PAPEL EFÍMERO ✦ AUTORÍA ABIERTA
+        <h1 class="hero-title">
+            MÁQUINAS SENSIBLES<br>
+            DE BOLSILLO
+        </h1>
+
+        <div class="diagram-section">
+            <div class="diagram-visual">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABZgAAAO7CAAAAAD8Lr66AAEAAE..." 
+                     alt="Sistema E-TicketArte - Diagrama técnico">
+            </div>
+            <div class="diagram-text">
+                ┌──────────────────┐<br>
+                │ <span class="highlight">ESPECTADOR</span>      │<br>
+                └────────┬─────────┘<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;┌───┴────┐<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;│ <span class="highlight">BOTÓN</span>   │<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;└───┬────┘<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+                &nbsp;&nbsp;┌──────┴──────┐<br>
+                &nbsp;&nbsp;│ <span class="highlight">ALGORITMO</span>    │<br>
+                &nbsp;&nbsp;└──────┬──────┘<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+                &nbsp;&nbsp;┌──────┴──────┐<br>
+                &nbsp;&nbsp;│ <span class="highlight">IMPRESORA</span>    │<br>
+                &nbsp;&nbsp;│ <span class="highlight">203 DPI</span>      │<br>
+                &nbsp;&nbsp;└──────────────┘<br>
+                <br>
+                <span class="highlight">✦ OBRA ÚNICA ✦</span>
+            </div>
         </div>
 
-        <p style="font-size: 13px; max-width: 600px; line-height: 1.8; margin-bottom: 30px;">
-            Una transacción se convierte en obra. Un espectador presiona un botón. El sistema selecciona un prompt, 
-            un algoritmo, una regla generativa. En segundos, una pieza única e irrepetible se imprime sobre papel térmico. 
-            Autoría compartida entre inteligencia artificial y artistas. Destinada a desaparecer.
+        <p style="font-size: 13px; max-width: 800px; line-height: 1.9; margin: 40px auto; color: var(--text);">
+            Una transacción se convierte en obra.<br>
+            Un espectador presiona un botón.<br>
+            El sistema selecciona un prompt, un algoritmo, una regla generativa.<br>
+            En segundos, una pieza única e irrepetible se imprime sobre papel térmico.<br>
+            <br>
+            <strong>Autoría compartida entre inteligencia artificial y artistas.</strong><br>
+            <strong>Destinada a desaparecer.</strong>
         </p>
 
         <div class="cta-container">
-            <a href="#contact" class="btn btn-primary">Colaborar Ahora</a>
-            <a href="#features" class="btn btn-secondary">Conocer Más</a>
+            <a href="#contact" class="btn btn-primary">▸ Colaborar Ahora</a>
+            <a href="#features" class="btn btn-secondary">▸ Conocer Más</a>
         </div>
     </section>
 
     <section class="content">
-        <div class="section" id="features">
-            <h2 class="section-title">◆ CARACTERÍSTICAS TÉCNICAS</h2>
-            <ul class="features-list">
-                <li><strong>Modular y Replicable:</strong> Construcción de bajo costo. Raspberry Pi, Python, impresora térmica. Cualquier institución puede armar su propia copia.</li>
-                <li><strong>Autoría Abierta:</strong> Artistas, investigadores, docentes cargan sus propios prompts y algoritmos. El sistema no jerarquiza autorías.</li>
-                <li><strong>Offline o Conectado:</strong> Funciona autónomo sin internet, o conectado a APIs de IA generativa según necesidad.</li>
-                <li><strong>203 DPI de Precisión:</strong> Límite como potencia. Dos colores. Síntesis visual absoluta. Haikus gráficos.</li>
-                <li><strong>Efimeridad Conceptual:</strong> Papel térmico condenado a desvanecerse. Promueve atesoramiento de instantes.</li>
-            </ul>
-        </div>
-
+        <!-- Galería de imágenes del documento -->
         <div class="section">
-            <h2 class="section-title">◆ CONTEXTOS DE ACTIVACIÓN</h2>
-            <p style="margin-bottom: 20px; font-size: 12px;">E-TicketArte funciona en cualquier punto donde una transacción pueda convertirse en experiencia artística:</p>
-            <div class="contexts">
-                <div class="context-item">
-                    <div class="context-emoji">🎭</div>
-                    <div class="context-name">TEATROS</div>
-                    <p style="font-size: 10px; margin-top: 5px;">Boletería como laboratorio</p>
+            <h2 class="section-title">◆ DOCUMENTACIÓN VISUAL</h2>
+            <p class="section-intro">Imágenes y diagramas del proyecto:</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABZgAAAO7CAAAAAD8Lr66AAEAAE..." 
+                         alt="Diagrama del sistema E-TicketArte">
+                    <div class="gallery-caption">ARQUITECTURA DEL SISTEMA</div>
                 </div>
-                <div class="context-item">
-                    <div class="context-emoji">🏛️</div>
-                    <div class="context-name">MUSEOS</div>
-                    <p style="font-size: 10px; margin-top: 5px;">Entrada como obra</p>
-                </div>
-                <div class="context-item">
-                    <div class="context-emoji">📚</div>
-                    <div class="context-name">LIBRERÍAS</div>
-                    <p style="font-size: 10px; margin-top: 5px;">Compra con arte</p>
-                </div>
-                <div class="context-item">
-                    <div class="context-emoji">🎓</div>
-                    <div class="context-name">UNIVERSIDADES</div>
-                    <p style="font-size: 10px; margin-top: 5px;">Herramienta pedagógica</p>
-                </div>
-                <div class="context-item">
-                    <div class="context-emoji">🍽️</div>
-                    <div class="context-name">RESTAURANTES</div>
-                    <p style="font-size: 10px; margin-top: 5px;">Recibo que es obra</p>
-                </div>
-                <div class="context-item">
-                    <div class="context-emoji">🌍</div>
-                    <div class="context-name">ESPACIOS PÚBLICOS</div>
-                    <p style="font-size: 10px; margin-top: 5px;">Arte en tránsito</p>
+                <div class="gallery-item">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABkAAAALrCAAAAACD8xRFAAEAAE..." 
+                         alt="Flujo de operación E-TicketArte">
+                    <div class="gallery-caption">FLUJO DE OPERACIÓN</div>
                 </div>
             </div>
         </div>
 
+        <!-- Características -->
+        <div class="section" id="features">
+            <h2 class="section-title">◆ CARACTERÍSTICAS TÉCNICAS</h2>
+            <ul class="features-list">
+                <li>
+                    <strong>▸ Modular y Replicable:</strong><br>
+                    Construcción de bajo costo. Raspberry Pi, Python, impresora térmica. 
+                    Cualquier institución puede armar su propia copia.
+                </li>
+                <li>
+                    <strong>▸ Autoría Abierta:</strong><br>
+                    Artistas, investigadores, docentes cargan sus propios prompts y algoritmos. 
+                    El sistema no jerarquiza autorías.
+                </li>
+                <li>
+                    <strong>▸ Offline o Conectado:</strong><br>
+                    Funciona autónomo sin internet, o conectado a APIs de IA generativa según necesidad.
+                </li>
+                <li>
+                    <strong>▸ 203 DPI de Precisión:</strong><br>
+                    Límite como potencia. Dos colores. Síntesis visual absoluta. Haikus gráficos.
+                </li>
+                <li>
+                    <strong>▸ Efimeridad Conceptual:</strong><br>
+                    Papel térmico condenado a desvanecerse. Promueve atesoramiento de instantes.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contextos -->
+        <div class="section">
+            <h2 class="section-title">◆ CONTEXTOS DE ACTIVACIÓN</h2>
+            <p class="section-intro">
+                E-TicketArte funciona en cualquier punto donde una transacción pueda convertirse 
+                en experiencia artística:
+            </p>
+            <div class="contexts">
+                <div class="context-item">
+                    <div class="context-emoji">🎭</div>
+                    <div class="context-name">TEATROS</div>
+                    <p style="font-size: 10px;">Boletería como laboratorio</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🏛️</div>
+                    <div class="context-name">MUSEOS</div>
+                    <p style="font-size: 10px;">Entrada como obra</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">📚</div>
+                    <div class="context-name">LIBRERÍAS</div>
+                    <p style="font-size: 10px;">Compra con arte</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🎓</div>
+                    <div class="context-name">UNIVERSIDADES</div>
+                    <p style="font-size: 10px;">Herramienta pedagógica</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🍽️</div>
+                    <div class="context-name">RESTAURANTES</div>
+                    <p style="font-size: 10px;">Recibo que es obra</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-emoji">🌍</div>
+                    <div class="context-name">ESPACIOS PÚBLICOS</div>
+                    <p style="font-size: 10px;">Arte en tránsito</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Especificaciones -->
         <div class="section">
             <h2 class="section-title">◆ ESPECIFICACIONES</h2>
             <div class="specs">
                 <h3>HARDWARE Y SOFTWARE</h3>
                 <div class="spec-item">
-                    <span class="spec-label">Controlador</span>
+                    <span class="spec-label">Controlador:</span>
                     <span class="spec-value">Raspberry Pi 4</span>
                 </div>
                 <div class="spec-item">
-                    <span class="spec-label">Programación</span>
+                    <span class="spec-label">Programación:</span>
                     <span class="spec-value">Python 3.x</span>
                 </div>
                 <div class="spec-item">
-                    <span class="spec-label">Impresora</span>
+                    <span class="spec-label">Impresora:</span>
                     <span class="spec-value">Térmica USB · 203 DPI</span>
                 </div>
                 <div class="spec-item">
-                    <span class="spec-label">Interacción</span>
+                    <span class="spec-label">Interacción:</span>
                     <span class="spec-value">1 botón físico</span>
                 </div>
                 <div class="spec-item">
-                    <span class="spec-label">Generación</span>
+                    <span class="spec-label">Generación:</span>
                     <span class="spec-value">API o algoritmo local</span>
                 </div>
                 <div class="spec-item">
-                    <span class="spec-label">Salida</span>
+                    <span class="spec-label">Salida:</span>
                     <span class="spec-value">Obra única · Papel efímero</span>
                 </div>
             </div>
         </div>
 
+        <!-- Disciplinas -->
         <div class="section">
             <h2 class="section-title">◆ DISCIPLINAS PARTICIPANTES</h2>
-            <p style="font-size: 12px; margin-bottom: 20px; line-height: 1.8;">
-                Poesía y literatura · Artes visuales · Música y composición · Arquitectura especulativa · Bioarte · 
-                Performance y acción · Danza · Fotografía expandida · Gastronomía conceptual · Filosofía · Diseño gráfico · 
-                Comunicación y nuevos medios.
+            <p class="section-intro">
+                Poesía · Literatura · Artes visuales · Música · Composición · Arquitectura · 
+                Bioarte · Performance · Danza · Fotografía · Gastronomía · Filosofía · 
+                Diseño gráfico · Comunicación · Nuevos medios.
             </p>
         </div>
     </section>
 
     <section class="footer-cta" id="contact">
-        <h2>ÚNETE AL LABORATORIO</h2>
+        <h2>◆ ÚNETE AL LABORATORIO ◆</h2>
         <p>
-            Artistas, investigadores, curadores, instituciones culturales. E-TicketArte es una plataforma abierta. 
+            Artistas, investigadores, curadores, instituciones culturales.<br>
+            E-TicketArte es una plataforma abierta.<br>
+            <br>
             Si tu institución tiene un punto de acceso —una boletería, un mostrador, una entrada— 
             nosotros llevamos el sistema.
         </p>
-        <a href="mailto:oliverio.duhalde@gmail.com" class="btn btn-secondary">ESCRIBIR UN EMAIL</a>
+        <a href="mailto:oliverio.duhalde@gmail.com" class="btn btn-secondary">✦ ESCRIBIR EMAIL ✦</a>
     </section>
 
     <footer>
-        E-TICKETARTE © 2026 | Concepto: <a href="https://github.com/oliverioduhalde">Oliverio Duhalde</a><br>
-        Máquinas Sensibles de Bolsillo — Cuando el arte se completa con quienes lo habitan
+        E-TICKETARTE © 2026<br>
+        Concepto: <a href="https://github.com/oliverioduhalde">Oliverio Duhalde</a><br>
+        <br>
+        Máquinas Sensibles de Bolsillo<br>
+        Cuando el arte se completa con quienes lo habitan
     </footer>
 </body>
 </html>
