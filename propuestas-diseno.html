@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TicketArte — 3 Propuestas de Diseño</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: 'Helvetica', Arial, sans-serif;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Propuestas */
+        .propuestas {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 80px;
+        }
+
+        .propuesta {
+            border: 2px solid #000;
+            padding: 40px;
+            background: #fafafa;
+        }
+
+        .propuesta-header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .propuesta-title {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .propuesta-subtitle {
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .propuesta-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .mockup {
+            border: 2px solid #000;
+            background: white;
+            padding: 20px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 11px;
+        }
+
+        .mockup h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .mockup-line {
+            border-top: 1px solid #000;
+            height: 1px;
+            margin: 10px 0;
+        }
+
+        .mockup-icon {
+            font-size: 28px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .mockup-text {
+            font-size: 10px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            padding: 15px;
+            border-left: 3px solid #000;
+            padding-left: 12px;
+        }
+
+        .feature-label {
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Iconos Bauhaus */
+        .icon-set {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .icon-box {
+            border: 1px solid #000;
+            padding: 15px;
+            text-align: center;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .icon-label {
+            font-size: 8px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Propuesta específica */
+        .propuesta-1 .mockup {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5px;
+        }
+
+        .propuesta-2 .mockup {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        .propuesta-3 .mockup {
+            justify-content: flex-start;
+            padding: 40px 20px;
+        }
+
+        .grid-item {
+            border: 1px solid #000;
+            padding: 10px;
+            font-size: 9px;
+            min-height: 60px;
+        }
+
+        .diagram {
+            font-family: monospace;
+            font-size: 9px;
+            line-height: 1.4;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #000;
+            background: white;
+            overflow-x: auto;
+        }
+
+        .comparison {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px solid #000;
+            background: #f5f5f5;
+        }
+
+        .comparison h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .comparison-table td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            border: 1px solid #000;
+            padding: 10px;
+            background: #000;
+            color: white;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: white;
+        }
+
+        @media (max-width: 1024px) {
+            .propuesta-content {
+                grid-template-columns: 1fr;
+            }
+
+            .icon-set {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>E-TICKETARTE</h1>
+        <p class="subtitle">3 Propuestas de Diseño Minimal — Bauhaus + Estética Térmica</p>
+
+        <div class="propuestas">
+            <!-- PROPUESTA 1 -->
+            <div class="propuesta">
+                <div class="propuesta-header">
+                    <div class="propuesta-title">PROPUESTA 1: MONOLÍTICA TÉRMICA</div>
+                    <div class="propuesta-subtitle">Inspirada en papel térmico 203 DPI — Tipografía y líneas puras</div>
+                </div>
+
+                <div class="propuesta-content">
+                    <div class="mockup">
+                        <h2>ETICKETARTE</h2>
+                        <div class="mockup-line"></div>
+                        <div class="mockup-text">MAQUINAS SENSIBLES
+DE BOLSILLO</div>
+                        <div class="mockup-line"></div>
+                        <div class="mockup-text">Cuando una transaccion
+se convierte en obra.
+
+Autoría abierta.
+Papel efímero.
+203 DPI de precisión.</div>
+                        <div class="mockup-line"></div>
+                        <div class="mockup-text">[ ] COLABORAR AHORA
+[ ] CONOCER MAS</div>
+                    </div>
+
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Estética</div>
+                            <div class="feature-desc">Recrea exactamente la experiencia de un ticket impreso. Monoespaciado. Tipografía grande y clara.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Legibilidad</div>
+                            <div class="feature-desc">Máxima claridad. Cada elemento ocupa su espacio. Bauhaus puro.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Impacto</div>
+                            <div class="feature-desc">Evoca directamente los tickets térmicos. Conceptualmente poderosa.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Iconografía</div>
+                            <div class="feature-desc">Símbolos lineales simples. Cuadrados, círculos, líneas. ASCII-like.</div>
+                        </div>
+
+                        <div style="margin-top: 20px; border-top: 2px solid #000; padding-top: 20px;">
+                            <div class="feature-label">Iconos Propuestos:</div>
+                            <div class="icon-set">
+                                <div class="icon-box">
+                                    [ ]<div class="icon-label">Acción</div>
+                                </div>
+                                <div class="icon-box">
+                                    ◆<div class="icon-label">Dato</div>
+                                </div>
+                                <div class="icon-box">
+                                    ◯<div class="icon-label">Proceso</div>
+                                </div>
+                                <div class="icon-box">
+                                    ▬<div class="icon-label">Línea</div>
+                                </div>
+                                <div class="icon-box">
+                                    ◈<div class="icon-label">Arte</div>
+                                </div>
+                                <div class="icon-box">
+                                    ◄►<div class="icon-label">Flujo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROPUESTA 2 -->
+            <div class="propuesta">
+                <div class="propuesta-header">
+                    <div class="propuesta-title">PROPUESTA 2: GRID MODULAR</div>
+                    <div class="propuesta-subtitle">Bauhaus estructurado — Bloques geométricos y proporciones áureas</div>
+                </div>
+
+                <div class="propuesta-content">
+                    <div class="mockup">
+                        <div class="grid-item" style="grid-column: 1/3; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">ETICKETARTE</div>
+                        <div class="grid-item">◆</div>
+                        <div class="grid-item">◆</div>
+                        <div class="grid-item" style="grid-column: 1/3;">MÁQUINAS<br>SENSIBLES</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item" style="grid-column: 1/3;">Autoría abierta<br>Papel efímero</div>
+                        <div class="grid-item">◯</div>
+                        <div class="grid-item">◯</div>
+                    </div>
+
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Estructura</div>
+                            <div class="feature-desc">Grid perfecto de 12 columnas. Proporciones modulares. Orden absoluto.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Jerarquía</div>
+                            <div class="feature-desc">Información distribuida en bloques. Fácil escaneo visual.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Extensibilidad</div>
+                            <div class="feature-desc">Fácil agregar contenido sin romper la estructura. Grid resiliente.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Iconografía</div>
+                            <div class="feature-desc">Símbolos geométricos que respeten el grid. Rectángulos, triángulos, círculos exactos.</div>
+                        </div>
+
+                        <div style="margin-top: 20px; border-top: 2px solid #000; padding-top: 20px;">
+                            <div class="feature-label">Iconos Propuestos:</div>
+                            <div class="icon-set">
+                                <div class="icon-box">
+                                    ■<div class="icon-label">Bloque</div>
+                                </div>
+                                <div class="icon-box">
+                                    ▲<div class="icon-label">Arriba</div>
+                                </div>
+                                <div class="icon-box">
+                                    ●<div class="icon-label">Centro</div>
+                                </div>
+                                <div class="icon-box">
+                                    ▬▬<div class="icon-label">Línea</div>
+                                </div>
+                                <div class="icon-box">
+                                    ◆<div class="icon-label">Estrella</div>
+                                </div>
+                                <div class="icon-box">
+                                    ✕<div class="icon-label">Cruce</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROPUESTA 3 -->
+            <div class="propuesta">
+                <div class="propuesta-header">
+                    <div class="propuesta-title">PROPUESTA 3: MINIMALISTA EXPERIMENTAL</div>
+                    <div class="propuesta-subtitle">Espacios en blanco + Diagrama conceptual — Máxima reducción</div>
+                </div>
+
+                <div class="propuesta-content">
+                    <div class="mockup">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="font-size: 14px; font-weight: bold; letter-spacing: 2px;">ETICKETARTE</div>
+                        </div>
+
+                        <div class="diagram">
+┌─────────────────┐
+│  MÁQUINAS        │
+│  SENSIBLES       │
+└────────┬────────┘
+         │
+    ┌────┴────┐
+    │ BOTÓN   │
+    └────┬────┘
+         │
+   ┌─────┴─────┐
+   │ ALGORITMO  │
+   └────┬──────┘
+        │
+  ┌─────┴──────┐
+  │ IMPRESORA  │
+  └────────────┘
+  
+  OBRA ÚNICA
+  PAPEL EFÍMERO
+  AUTORÍA ABIERTA
+                        </div>
+                    </div>
+
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Espacio</div>
+                            <div class="feature-desc">Máxima respiración. Cada elemento flota en blanco. Minimalismo absoluto.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Conceptualidad</div>
+                            <div class="feature-desc">El diagrama es el mensaje. El flujo del sistema como elemento visual principal.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Elegancia</div>
+                            <div class="feature-desc">Menos es más. Solo lo necesario. Monoespaciado como arte en sí mismo.</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">✓ Iconografía</div>
+                            <div class="feature-desc">Símbolos ASCII: cajas, líneas, flujos. 100% tipografía.</div>
+                        </div>
+
+                        <div style="margin-top: 20px; border-top: 2px solid #000; padding-top: 20px;">
+                            <div class="feature-label">Iconos Propuestos:</div>
+                            <div class="icon-set">
+                                <div class="icon-box">
+                                    ┌─┐<div class="icon-label">Caja</div>
+                                </div>
+                                <div class="icon-box">
+                                    ┃<div class="icon-label">Línea V</div>
+                                </div>
+                                <div class="icon-box">
+                                    ─<div class="icon-label">Línea H</div>
+                                </div>
+                                <div class="icon-box">
+                                    ┼<div class="icon-label">Nodo</div>
+                                </div>
+                                <div class="icon-box">
+                                    ▸<div class="icon-label">Flujo</div>
+                                </div>
+                                <div class="icon-box">
+                                    ◄►<div class="icon-label">Bidi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparativa -->
+        <div class="comparison">
+            <h3>COMPARATIVA DE PROPUESTAS</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Aspecto</th>
+                    <th>Propuesta 1: Térmica</th>
+                    <th>Propuesta 2: Grid</th>
+                    <th>Propuesta 3: Experimental</th>
+                </tr>
+                <tr>
+                    <td><strong>Legibilidad</strong></td>
+                    <td>Excelente</td>
+                    <td>Excelente</td>
+                    <td>Muy buena</td>
+                </tr>
+                <tr>
+                    <td><strong>Conceptualidad</strong></td>
+                    <td>Muy alta (evoca tickets)</td>
+                    <td>Alta (orden Bauhaus)</td>
+                    <td>Muy alta (diagrama conceptual)</td>
+                </tr>
+                <tr>
+                    <td><strong>Extensibilidad</strong></td>
+                    <td>Media</td>
+                    <td>Excelente</td>
+                    <td>Media</td>
+                </tr>
+                <tr>
+                    <td><strong>Impacto Visual</strong></td>
+                    <td>Fuerte</td>
+                    <td>Moderado</td>
+                    <td>Muy fuerte</td>
+                </tr>
+                <tr>
+                    <td><strong>Iconografía</strong></td>
+                    <td>ASCII/Símbolos simples</td>
+                    <td>Geométrica pura</td>
+                    <td>100% Tipografía</td>
+                </tr>
+                <tr>
+                    <td><strong>Dificultad</strong></td>
+                    <td>Baja</td>
+                    <td>Media</td>
+                    <td>Baja</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
