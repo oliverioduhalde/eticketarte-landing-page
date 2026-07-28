@@ -165,6 +165,18 @@ a{color:inherit;text-decoration:none}
 }
 .spec__val{font-size:16px;letter-spacing:.8px;text-align:right}
 
+/* ---------- GALERIA DE SALIDAS ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.grid figure{margin:0}
+.grid img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  filter:grayscale(100%);
+  transition:transform 1s cubic-bezier(.16,1,.3,1);
+}
+.grid figure:hover img{transform:scale(1.04)}
+.grid .frame{overflow:hidden;background:var(--light-gray)}
+.grid figcaption{margin-top:14px;font-size:16px;line-height:1.5;letter-spacing:.8px}
+
 /* ---------- FIGURE ---------- */
 .figure{margin-top:64px}
 .figure img{width:100%;filter:grayscale(100%)}
@@ -214,6 +226,7 @@ a{color:inherit;text-decoration:none}
   .nav__right{gap:24px}
   .cols{grid-template-columns:1fr;gap:32px}
   .ctx{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr);gap:24px}
 }
 @media (max-width:1024px){
   .section{padding-top:88px;padding-bottom:88px}
@@ -237,6 +250,7 @@ a{color:inherit;text-decoration:none}
   .label{letter-spacing:1.8px;margin-bottom:28px}
   .ctx{grid-template-columns:1fr}
   .ctx__item{padding:24px 0}
+  .grid{grid-template-columns:1fr;gap:32px;margin-top:32px}
   .spec__row{flex-direction:column;gap:4px}
   .spec__val{text-align:left}
   .footer{padding:48px 0 72px}
@@ -287,6 +301,7 @@ a{color:inherit;text-decoration:none}
     <ul class="nav__links" id="navLinks">
       <li><a href="#sistema" data-i18n="navSystem">System</a></li>
       <li><a href="#autoria" data-i18n="navAuthorship">Authorship</a></li>
+      <li><a href="#archivo" data-i18n="navArchive">Archive</a></li>
       <li><a href="#contextos" data-i18n="navContexts">Contexts</a></li>
       <li><a href="#specs" data-i18n="navSpecs">Specs</a></li>
       <li><a href="#contacto" data-i18n="navContact">Contact</a></li>
@@ -306,11 +321,11 @@ a{color:inherit;text-decoration:none}
 
 <section class="hero" id="top">
   <div class="hero__panel">
-    <img src="assets/hero-2.png" data-i18n-src="heroSrcA" data-i18n-alt="heroAltA" alt="Series of generative tickets printed during system tests">
+    <img src="assets/tickets-trio.jpg" data-i18n-src="heroSrcA" data-i18n-alt="heroAltA" alt="Three printed tickets: a dragonfly, a mantis and an engraved figure">
     <div class="hero__word" data-i18n="heroA">Sensitive</div>
   </div>
   <div class="hero__panel">
-    <img src="assets/hero-1.png" data-i18n-src="heroSrcB" data-i18n-alt="heroAltB" alt="Thermal printer producing an ETicketArte ticket-artwork">
+    <img src="assets/printer-hibiscus.jpg" data-i18n-src="heroSrcB" data-i18n-alt="heroAltB" alt="Thermal printer producing a ticket with a botanical engraving">
     <div class="hero__word" data-i18n="heroB">Machines</div>
   </div>
 </section>
@@ -347,8 +362,8 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
     <div class="figure">
-      <img src="assets/hero-2.png" data-i18n-alt="altTickets" alt="Generative tickets printed during system tests">
-      <p class="figure__cap" data-i18n="capTickets">Generative tickets printed during system tests.</p>
+      <img src="assets/printer-detail.jpg" loading="lazy" data-i18n-alt="altPrinter" alt="The device in operation with a freshly printed piece">
+      <p class="figure__cap" data-i18n="capTickets">The device in operation: the piece comes out already printed.</p>
     </div>
   </section>
 
@@ -372,6 +387,43 @@ a{color:inherit;text-decoration:none}
           <p class="lead" data-i18n="disc2">An indicative, non-exhaustive menu of the profiles that can take the system as a support. Each discipline brings its own question about the algorithm, not a closed answer.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section wrap section--rule" id="archivo">
+    <h2 class="label" data-i18n="labelArchive">Archive of outputs</h2>
+    <div class="cols">
+      <div></div>
+      <div>
+        <p class="lead" data-i18n="archiveLead">Every press of the button produces a different piece. These are some of the outputs: naturalist records, generative patterns, gestural strokes, instructions for action. All of them share the same material condition —203 DPI, two values, thermal paper— and the same fate.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <figure>
+        <div class="frame"><img src="assets/tickets-naturalist.jpg" loading="lazy" data-i18n-alt="g1Alt" alt="Three tickets: a dragonfly, a generative pattern and a hand-drawn map"></div>
+        <figcaption data-i18n="g1">Naturalist record, generative pattern and instruction for action.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/tickets-botanical.jpg" loading="lazy" data-i18n-alt="g2Alt" alt="Two tickets: a botanical engraving and an ensō brush circle"></div>
+        <figcaption data-i18n="g2">Botanical engraving and gestural stroke on the same medium.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/tickets-gestural.jpg" loading="lazy" data-i18n-alt="g3Alt" alt="Three tickets with drawing, texture and brushstroke"></div>
+        <figcaption data-i18n="g3">Drawing, texture and gesture: three ways of inhabiting the same limit.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/ticket-map.jpg" loading="lazy" data-i18n-alt="g4Alt" alt="Ticket printed with the instruction: draw a map to get lost"></div>
+        <figcaption data-i18n="g4">The ticket as a score for action: an instruction, not an image.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/tickets-circles.jpg" loading="lazy" data-i18n-alt="g5Alt" alt="Two tickets with circular generative structures"></div>
+        <figcaption data-i18n="g5">Generative geometry: the same algorithm, two different runs.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/ticket-texture.jpg" loading="lazy" data-i18n-alt="g6Alt" alt="Ticket fully covered by a dense wave texture"></div>
+        <figcaption data-i18n="g6">Full-bleed texture: 203 DPI pushed to its limit.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -449,8 +501,8 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
     <div class="figure">
-      <img src="assets/hero-1.png" data-i18n-alt="altPrinter" alt="Detail of the ETicketArte device in operation">
-      <p class="figure__cap" data-i18n="capPrinter">The device in operation: the ticket as artwork, not as receipt.</p>
+      <img src="assets/tickets-metadata.jpg" loading="lazy" data-i18n-alt="altTickets" alt="Two tickets with their printing metadata visible">
+      <p class="figure__cap" data-i18n="capPrinter">Each ticket records its own metadata: number, date, source file.</p>
     </div>
   </section>
 
@@ -492,14 +544,14 @@ var I18N = {
     title:"ETicketArte | Máquinas Sensibles de Bolsillo",
     desc:"Un sistema de impresión térmica autónomo para la autoría compartida entre inteligencia artificial y artistas. Una transacción se convierte en obra.",
     brandSub:"Sistema",
-    navSystem:"Sistema", navAuthorship:"Autoría", navContexts:"Contextos", navSpecs:"Ficha", navContact:"Contacto",
+    navSystem:"Sistema", navAuthorship:"Autoría", navArchive:"Archivo", navContexts:"Contextos", navSpecs:"Ficha", navContact:"Contacto",
     heroA:"Máquinas", heroB:"Sensibles",
     // El orden de lectura se invierte respecto del inglés, así que las fotos
     // también se intercambian para que cada palabra conserve su imagen.
-    heroSrcA:"assets/hero-1.png", heroAltA:"Impresora térmica imprimiendo un ticket-obra de ETicketArte",
-    heroSrcB:"assets/hero-2.png", heroAltB:"Serie de tickets generativos impresos durante pruebas del sistema",
-    altPrinter:"Impresora térmica imprimiendo un ticket-obra de ETicketArte",
-    altTickets:"Serie de tickets generativos impresos durante pruebas del sistema",
+    heroSrcA:"assets/printer-hibiscus.jpg", heroAltA:"Impresora térmica imprimiendo un ticket con un grabado botánico",
+    heroSrcB:"assets/tickets-trio.jpg", heroAltB:"Tres tickets impresos: una libélula, una mantis y una figura grabada",
+    altPrinter:"El dispositivo en funcionamiento, con una pieza recién impresa",
+    altTickets:"Dos tickets con sus metadatos de impresión visibles",
     quote:"Una transacción se convierte en obra. Un algoritmo, en coautor.",
     lead1:"ETicketArte es un dispositivo de impresión térmica autónomo —una tiquetera de boletería reprogramada— que materializa, en cuestión de segundos, obras generativas cocreadas entre inteligencia artificial y autores humanos.",
     lead2:"Cada vez que un espectador presiona su único botón, el sistema selecciona al azar uno de los prompts, algoritmos o conjuntos de reglas cargados en su memoria y los envía a un modelo o programa generativo. El resultado —un texto, una imagen, una partitura, una instrucción de acción— se imprime de inmediato sobre papel térmico: una pieza única, irrepetible, destinada a desaparecer.",
@@ -510,7 +562,7 @@ var I18N = {
     subLimitBody:"Lejos de perseguir la alta definición de las pantallas contemporáneas, el sistema se apoya en la extrema limitación de su hardware: resolución monocromática de 203 DPI y sólo dos colores. Esa restricción es una fortaleza poética: obliga a cada autor —humano o artificial— a una síntesis visual y conceptual absoluta. El límite técnico se vuelve un dispositivo curatorial en sí mismo.",
     subEphemeralTitle:"Lo efímero y la tinta térmica",
     subEphemeralBody:"El papel térmico está condenado a degradarse por efecto de la luz y la temperatura. Esa condición no es un defecto: es su centro conceptual. El espectador recibe un instante de lucidez humano-algorítmica que se va a desvanecer, lo que invita a atesorar el momento en la memoria, no en el objeto. Producir para perder, imprimir para olvidar, y en ese olvido, recordar mejor.",
-    capTickets:"Tickets generativos impresos durante pruebas del sistema.",
+    capTickets:"El dispositivo en funcionamiento: la pieza sale ya impresa.",
     labelAuthorship:"Arquitectura de autoría abierta",
     auth1:"El núcleo conceptual de ETicketArte no es un catálogo cerrado de autores, sino una arquitectura que se completa con quienes la habitan. Existe una línea fundacional, pero funciona como semilla, no como límite.",
     auth2:"Cada artista, investigador, docente o institución que participe puede diseñar su propio prompt, su propio conjunto de reglas generativas o su propio dataset, y cargarlo al sistema bajo las mismas condiciones técnicas: un botón, una selección aleatoria, una impresora térmica. El dispositivo no jerarquiza autorías: todos los participantes quedan representados por un mismo formato de salida —el ticket de 203 DPI— que iguala procedencias disciplinares distintas bajo una misma condición material y temporal.",
@@ -518,6 +570,20 @@ var I18N = {
     discTitle:"Disciplinas abiertas",
     disc1:"Poesía y literatura. Artes visuales y dibujo. Música y composición sonora. Arquitectura y diseño especulativo. Bioarte y ciencia. Performance y acción. Danza y coreografía. Cine y fotografía expandida. Gastronomía conceptual. Filosofía y pensamiento crítico. Diseño gráfico y tipografía. Comunicación y nuevos medios.",
     disc2:"Un menú orientativo, no exhaustivo, de los perfiles que pueden tomar el sistema como soporte. Cada disciplina aporta su propia pregunta sobre el algoritmo, no una respuesta cerrada.",
+    labelArchive:"Archivo de salidas",
+    archiveLead:"Cada pulsación del botón produce una pieza distinta. Estas son algunas de las salidas: registros naturalistas, tramas generativas, trazos gestuales, instrucciones de acción. Todas comparten la misma condición material —203 DPI, dos valores, papel térmico— y el mismo destino.",
+    g1:"Registro naturalista, trama generativa e instrucción de acción.",
+    g1Alt:"Tres tickets: una libélula, una trama generativa y un mapa dibujado",
+    g2:"Grabado botánico y trazo gestual sobre el mismo soporte.",
+    g2Alt:"Dos tickets: un grabado botánico y un círculo ensō a pincel",
+    g3:"Dibujo, textura y gesto: tres modos de habitar el mismo límite.",
+    g3Alt:"Tres tickets con dibujo, textura y pincelada",
+    g4:"El ticket como partitura de acción: una instrucción, no una imagen.",
+    g4Alt:"Ticket impreso con la instrucción: dibujá un mapa para perderte",
+    g5:"Geometría generativa: el mismo algoritmo, dos ejecuciones distintas.",
+    g5Alt:"Dos tickets con estructuras generativas circulares",
+    g6:"Textura a sangre: los 203 DPI llevados al límite.",
+    g6Alt:"Ticket cubierto por completo por una textura densa de ondas",
     labelContexts:"Versatilidad contextual",
     ctxLead:"ETicketArte no necesita una sala: necesita una boletería, un mostrador o cualquier punto donde una transacción cotidiana —comprar una entrada, un libro, un café— pueda interrumpirse con un instante de arte. El sistema es deliberadamente portátil, de bajo costo y modular: cualquier institución que disponga de un punto de venta o de acceso puede alojarlo, alimentarlo con sus propios autores y convertir su flujo de público en una audiencia de arte generativo sin proponérselo.",
     ctx1Name:"Museos y centros de arte", ctx1Desc:"La entrada deja de ser comprobante y pasa a ser obra. Una capa generativa que acompaña la visita.",
@@ -538,7 +604,7 @@ var I18N = {
     specK6:"Color", specV6:"Monocromo, dos valores",
     specK7:"Soporte", specV7:"Papel térmico · degradación progresiva",
     specK8:"Montaje", specV8:"Modular, portátil, replicable",
-    capPrinter:"El dispositivo en funcionamiento: el ticket como obra, no como comprobante.",
+    capPrinter:"Cada ticket registra sus propios metadatos: número, fecha, archivo de origen.",
     ctaTitle:"Colaborar",
     cta1:"Artistas, investigadores, curadores, museos, festivales e instituciones culturales: ETicketArte es una plataforma abierta. Si tu espacio tiene un punto de acceso —una boletería, un mostrador, una entrada— el sistema puede alojarse allí y alimentarse con tus propios autores.",
     cta2:"Escribinos para proponer una activación, un taller o una residencia.",
