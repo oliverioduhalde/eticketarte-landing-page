@@ -18,6 +18,15 @@
   --rule:#CCCCCC;
   --accent:#E63C2F;
   --nav-h:80px;
+
+  /* Escalas fluidas: se adaptan de forma continua al ancho real de la
+     pantalla en lugar de saltar en breakpoints fijos. Así funciona igual
+     en un 360px angosto, en una tablet y al rotar el teléfono. */
+  --gutter:clamp(20px,5vw,48px);
+  --fs-display:clamp(30px,7.6vw,68px);
+  --fs-label:clamp(16px,3.4vw,20px);
+  --fs-sub:clamp(16px,3.6vw,21.6px);
+  --fs-quote:clamp(20px,4.8vw,28px);
 }
 
 html{scroll-behavior:smooth}
@@ -42,14 +51,16 @@ a{color:inherit;text-decoration:none}
   height:var(--nav-h);
   background:var(--white);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
+  gap:12px;
+  padding:0 var(--gutter);
 }
 .nav__brand{
   font-size:16px;font-weight:900;letter-spacing:2.1px;
   color:var(--dark);text-transform:uppercase;
+  white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis;
 }
 .nav__brand span{font-weight:400;color:var(--text)}
-.nav__right{display:flex;align-items:center;gap:40px}
+.nav__right{display:flex;align-items:center;gap:40px;flex-shrink:0}
 .nav__links{display:flex;gap:44px;list-style:none}
 .nav__links a{
   font-size:16px;font-weight:400;letter-spacing:.8px;
@@ -91,30 +102,30 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 32%,rgba(0,0,0,0) 62%);
 }
 .hero__word{
-  position:absolute;left:48px;bottom:48px;z-index:2;
-  font-size:68px;font-weight:500;line-height:1;letter-spacing:1px;
+  position:absolute;left:var(--gutter);bottom:var(--gutter);right:var(--gutter);z-index:2;
+  font-size:var(--fs-display);font-weight:500;line-height:1;letter-spacing:1px;
   text-transform:uppercase;color:var(--white);
 }
 
 /* ---------- LAYOUT ---------- */
-.wrap{max-width:1124px;margin:0 auto;padding:0 48px}
+.wrap{max-width:1124px;margin:0 auto;padding:0 var(--gutter)}
 .section{padding-top:120px;padding-bottom:120px}
 .section--rule{border-top:1px solid var(--rule)}
 
 .label{
-  font-size:20px;font-weight:900;letter-spacing:2.1px;line-height:1.8;
+  font-size:var(--fs-label);font-weight:900;letter-spacing:2.1px;line-height:1.8;
   text-transform:uppercase;color:var(--dark);
   margin-bottom:40px;
 }
 .display{
-  font-size:68px;font-weight:500;letter-spacing:1px;line-height:1.05;
+  font-size:var(--fs-display);font-weight:500;letter-spacing:1px;line-height:1.05;
   text-transform:uppercase;color:var(--dark);
   margin-bottom:32px;
 }
 .lead{font-size:16px;line-height:1.6;letter-spacing:.8px;max-width:70ch}
 .lead + .lead{margin-top:20px}
 .quote{
-  font-size:28px;font-weight:500;line-height:1.45;letter-spacing:.5px;
+  font-size:var(--fs-quote);font-weight:500;line-height:1.45;letter-spacing:.5px;
   color:var(--dark);max-width:24ch;
 }
 
@@ -124,7 +135,7 @@ a{color:inherit;text-decoration:none}
 .sub{margin-bottom:56px}
 .sub:last-child{margin-bottom:0}
 .sub__title{
-  font-size:21.6px;font-weight:900;letter-spacing:1px;line-height:1.5;
+  font-size:var(--fs-sub);font-weight:900;letter-spacing:1px;line-height:1.5;
   text-transform:uppercase;color:var(--text);
   margin-bottom:16px;
 }
@@ -137,7 +148,7 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);display:block;margin-bottom:12px;
 }
 .ctx__name{
-  font-size:21.6px;font-weight:900;letter-spacing:1px;line-height:1.4;
+  font-size:var(--fs-sub);font-weight:900;letter-spacing:1px;line-height:1.4;
   text-transform:uppercase;color:var(--dark);margin-bottom:8px;
 }
 .ctx__desc{font-size:16px;line-height:1.6;letter-spacing:.8px}
@@ -161,11 +172,12 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- LINK ---------- */
 .link{
-  display:inline-block;
+  display:inline-block;max-width:100%;
   font-size:20px;font-weight:900;letter-spacing:2.1px;text-transform:uppercase;
   color:var(--dark);
   padding-bottom:6px;border-bottom:2px solid var(--dark);
   transition:color .25s ease,border-color .25s ease;
+  overflow-wrap:anywhere;
 }
 .link:hover{color:var(--accent);border-color:var(--accent)}
 .link--light{color:var(--white);border-color:var(--white)}
@@ -175,11 +187,17 @@ a{color:inherit;text-decoration:none}
 .footer{background:var(--dark);color:#CBD6E2;padding:56px 0 120px}
 .footer__grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .footer__mark{
-  font-size:68px;font-weight:500;letter-spacing:1px;line-height:1;
+  font-size:var(--fs-display);font-weight:500;letter-spacing:1px;line-height:1;
   text-transform:uppercase;color:#3A3A3A;
+  overflow-wrap:anywhere;
 }
-.footer__row{display:flex;gap:16px;margin-bottom:12px;font-size:16px;letter-spacing:.8px}
-.footer__tag{color:var(--accent);font-weight:900;letter-spacing:2.1px;min-width:64px}
+.footer__row{
+  display:flex;gap:16px;margin-bottom:12px;font-size:16px;letter-spacing:.8px;
+  flex-wrap:wrap;
+}
+.footer__tag{color:var(--accent);font-weight:900;letter-spacing:2.1px;min-width:64px;flex-shrink:0}
+/* El mail es una cadena larga sin espacios: sin esto desborda en pantallas angostas. */
+.footer__row a,.footer__row span:not(.footer__tag){min-width:0;overflow-wrap:anywhere}
 .footer__legal{
   margin-top:56px;padding-top:24px;border-top:1px solid #3A3A3A;
   font-size:16px;letter-spacing:.8px;color:#7A7A7A;
@@ -188,46 +206,35 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1300px){
-  .display,.hero__word,.footer__mark{font-size:56px}
   .nav__right{gap:32px}
   .nav__links{gap:32px}
 }
 @media (max-width:1100px){
-  .nav{padding:0 32px}
   .nav__links{gap:24px}
   .nav__right{gap:24px}
-  .wrap{padding:0 32px}
   .cols{grid-template-columns:1fr;gap:32px}
   .ctx{grid-template-columns:repeat(2,1fr)}
-  .hero__word{left:32px;bottom:32px}
 }
 @media (max-width:1024px){
   .section{padding-top:88px;padding-bottom:88px}
-  .display,.hero__word,.footer__mark{font-size:48px}
 }
 @media (max-width:768px){
   :root{--nav-h:68px}
-  .nav{padding:0 24px}
   .nav__toggle{display:block}
   .nav__right{gap:12px}
   .nav__links{
     position:fixed;top:var(--nav-h);left:0;right:0;
     background:var(--white);flex-direction:column;gap:0;
-    padding:0 24px;max-height:0;overflow:hidden;
+    padding:0 var(--gutter);max-height:0;overflow:hidden;
     transition:max-height .35s ease;
   }
-  .nav__links.is-open{max-height:320px;padding:8px 24px 24px}
+  .nav__links.is-open{max-height:340px;padding:8px var(--gutter) 24px}
   .nav__links li{border-bottom:1px solid var(--rule)}
   .nav__links a{display:block;padding:16px 0}
   .hero{grid-template-columns:1fr;height:auto;min-height:0}
-  .hero__panel{height:52vw;min-height:260px}
-  .wrap{padding:0 24px}
+  .hero__panel{height:56vw;min-height:240px;max-height:60vh}
   .section{padding-top:64px;padding-bottom:64px}
-  .display,.hero__word,.footer__mark{font-size:40px}
-  .hero__word{left:24px;bottom:24px}
-  .quote{font-size:22px}
-  .label{font-size:18px;letter-spacing:1.8px;margin-bottom:28px}
-  .sub__title,.ctx__name{font-size:18px}
+  .label{letter-spacing:1.8px;margin-bottom:28px}
   .ctx{grid-template-columns:1fr}
   .ctx__item{padding:24px 0}
   .spec__row{flex-direction:column;gap:4px}
@@ -236,10 +243,38 @@ a{color:inherit;text-decoration:none}
   .footer__grid{grid-template-columns:1fr;gap:40px}
   .link{font-size:18px;letter-spacing:1.8px}
 }
-@media (max-width:568px){
-  .display,.hero__word,.footer__mark{font-size:32px}
-  .nav__brand{font-size:14px;letter-spacing:1.6px}
+
+/* Pantallas angostas (S23 = 360px y similares): la marca completa no entra
+   junto al selector de idioma y la hamburguesa, así que se abrevia. */
+@media (max-width:520px){
+  .nav__brand span{display:none}
   .lang__btn,.lang__sep{font-size:14px}
+  .link{font-size:16px;letter-spacing:1.4px}
+}
+@media (max-width:360px){
+  .nav__brand{font-size:14px;letter-spacing:1.4px}
+}
+
+/* Teléfono rotado: poca altura disponible. Se recortan los paneles del hero
+   y el aire vertical para que el contenido siga siendo alcanzable. */
+@media (max-height:500px) and (orientation:landscape){
+  :root{--nav-h:60px}
+  /* Aunque el ancho supere los 768px, un teléfono rotado no tiene lugar para
+     el menú horizontal completo: se colapsa igual en hamburguesa. */
+  .nav__toggle{display:block}
+  .nav__links{
+    position:fixed;top:var(--nav-h);left:0;right:0;
+    background:var(--white);flex-direction:column;gap:0;
+    padding:0 var(--gutter);max-height:0;overflow:auto;
+    transition:max-height .35s ease;
+  }
+  .nav__links.is-open{max-height:calc(100vh - var(--nav-h));padding:8px var(--gutter) 24px}
+  .nav__links li{border-bottom:1px solid var(--rule)}
+  .nav__links a{display:block;padding:12px 0}
+  .hero{grid-template-columns:1fr 1fr;height:auto;min-height:0}
+  .hero__panel{height:auto;min-height:0;aspect-ratio:16/10;max-height:none}
+  .section{padding-top:48px;padding-bottom:48px}
+  .footer{padding:40px 0 56px}
 }
 </style>
 </head>
@@ -271,11 +306,11 @@ a{color:inherit;text-decoration:none}
 
 <section class="hero" id="top">
   <div class="hero__panel">
-    <img src="assets/hero-1.png" data-i18n-alt="altPrinter" alt="Thermal printer producing an ETicketArte ticket-artwork">
+    <img src="assets/hero-2.png" data-i18n-src="heroSrcA" data-i18n-alt="heroAltA" alt="Series of generative tickets printed during system tests">
     <div class="hero__word" data-i18n="heroA">Sensitive</div>
   </div>
   <div class="hero__panel">
-    <img src="assets/hero-2.png" data-i18n-alt="altTickets" alt="Series of generative tickets printed during system tests">
+    <img src="assets/hero-1.png" data-i18n-src="heroSrcB" data-i18n-alt="heroAltB" alt="Thermal printer producing an ETicketArte ticket-artwork">
     <div class="hero__word" data-i18n="heroB">Machines</div>
   </div>
 </section>
@@ -459,6 +494,10 @@ var I18N = {
     brandSub:"Sistema",
     navSystem:"Sistema", navAuthorship:"Autoría", navContexts:"Contextos", navSpecs:"Ficha", navContact:"Contacto",
     heroA:"Máquinas", heroB:"Sensibles",
+    // El orden de lectura se invierte respecto del inglés, así que las fotos
+    // también se intercambian para que cada palabra conserve su imagen.
+    heroSrcA:"assets/hero-1.png", heroAltA:"Impresora térmica imprimiendo un ticket-obra de ETicketArte",
+    heroSrcB:"assets/hero-2.png", heroAltB:"Serie de tickets generativos impresos durante pruebas del sistema",
     altPrinter:"Impresora térmica imprimiendo un ticket-obra de ETicketArte",
     altTickets:"Serie de tickets generativos impresos durante pruebas del sistema",
     quote:"Una transacción se convierte en obra. Un algoritmo, en coautor.",
@@ -518,6 +557,9 @@ document.querySelectorAll('[data-i18n]').forEach(function(el){
 document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
   EN[el.getAttribute('data-i18n-alt')] = el.getAttribute('alt');
 });
+document.querySelectorAll('[data-i18n-src]').forEach(function(el){
+  EN[el.getAttribute('data-i18n-src')] = el.getAttribute('src');
+});
 EN.title = document.title;
 EN.desc = document.getElementById('metaDesc').getAttribute('content');
 I18N.en = EN;
@@ -531,6 +573,10 @@ function apply(lang){
   document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
     var k = el.getAttribute('data-i18n-alt');
     if(d[k] !== undefined) el.setAttribute('alt', d[k]);
+  });
+  document.querySelectorAll('[data-i18n-src]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-src');
+    if(d[k] !== undefined && el.getAttribute('src') !== d[k]) el.setAttribute('src', d[k]);
   });
   if(d.title) document.title = d.title;
   if(d.desc) document.getElementById('metaDesc').setAttribute('content', d.desc);
