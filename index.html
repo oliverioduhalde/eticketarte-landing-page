@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ETicketArte | Máquinas Sensibles de Bolsillo</title>
-<meta name="description" content="Un sistema de impresión térmica autónomo para la autoría compartida entre inteligencia artificial y artistas. Una transacción se convierte en obra.">
+<title>ETicketArte | Sensitive Pocket Machines</title>
+<meta name="description" id="metaDesc" content="An autonomous thermal printing system for shared authorship between artificial intelligence and artists. A transaction becomes an artwork.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet">
@@ -49,12 +49,26 @@ a{color:inherit;text-decoration:none}
   color:var(--dark);text-transform:uppercase;
 }
 .nav__brand span{font-weight:400;color:var(--text)}
+.nav__right{display:flex;align-items:center;gap:40px}
 .nav__links{display:flex;gap:44px;list-style:none}
 .nav__links a{
   font-size:16px;font-weight:400;letter-spacing:.8px;
   color:var(--text);transition:color .25s ease;
 }
 .nav__links a:hover{color:var(--accent)}
+
+/* language switch */
+.lang{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.lang__btn{
+  background:none;border:0;cursor:pointer;padding:2px 0;
+  font-family:inherit;font-size:16px;font-weight:400;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--text);
+  transition:color .25s ease;
+}
+.lang__btn:hover{color:var(--accent)}
+.lang__btn[aria-pressed="true"]{font-weight:900;color:var(--dark)}
+.lang__sep{color:var(--rule);font-size:16px;line-height:1}
+
 .nav__toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--dark)}
 .nav__toggle span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
 
@@ -65,9 +79,7 @@ a{color:inherit;text-decoration:none}
   height:calc(100vh - var(--nav-h));
   min-height:540px;
 }
-.hero__panel{
-  position:relative;overflow:hidden;background:var(--dark);
-}
+.hero__panel{position:relative;overflow:hidden;background:var(--dark)}
 .hero__panel img{
   width:100%;height:100%;object-fit:cover;
   filter:grayscale(100%);
@@ -99,17 +111,13 @@ a{color:inherit;text-decoration:none}
   text-transform:uppercase;color:var(--dark);
   margin-bottom:32px;
 }
-.lead{
-  font-size:16px;line-height:1.6;letter-spacing:.8px;
-  max-width:70ch;
-}
+.lead{font-size:16px;line-height:1.6;letter-spacing:.8px;max-width:70ch}
 .lead + .lead{margin-top:20px}
 .quote{
   font-size:28px;font-weight:500;line-height:1.45;letter-spacing:.5px;
   color:var(--dark);max-width:24ch;
 }
 
-/* two-col text block */
 .cols{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start}
 
 /* ---------- SUBSECTIONS ---------- */
@@ -121,12 +129,9 @@ a{color:inherit;text-decoration:none}
   margin-bottom:16px;
 }
 
-/* ---------- CONTEXT GRID (typographic, no boxes) ---------- */
+/* ---------- CONTEXT GRID ---------- */
 .ctx{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.ctx__item{
-  border-top:1px solid var(--rule);
-  padding:32px 32px 32px 0;
-}
+.ctx__item{border-top:1px solid var(--rule);padding:32px 32px 32px 0}
 .ctx__num{
   font-size:16px;font-weight:900;letter-spacing:2.1px;
   color:var(--accent);display:block;margin-bottom:12px;
@@ -152,11 +157,9 @@ a{color:inherit;text-decoration:none}
 /* ---------- FIGURE ---------- */
 .figure{margin-top:64px}
 .figure img{width:100%;filter:grayscale(100%)}
-.figure__cap{
-  margin-top:16px;font-size:16px;letter-spacing:.8px;color:var(--text);
-}
+.figure__cap{margin-top:16px;font-size:16px;letter-spacing:.8px;color:var(--text)}
 
-/* ---------- LINK BUTTON (text-only, EYRC style) ---------- */
+/* ---------- LINK ---------- */
 .link{
   display:inline-block;
   font-size:20px;font-weight:900;letter-spacing:2.1px;text-transform:uppercase;
@@ -169,17 +172,14 @@ a{color:inherit;text-decoration:none}
 .link--light:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------- FOOTER ---------- */
-.footer{
-  background:var(--dark);color:#CBD6E2;
-  padding:56px 0 120px;margin-top:0;
-}
+.footer{background:var(--dark);color:#CBD6E2;padding:56px 0 120px}
 .footer__grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .footer__mark{
   font-size:68px;font-weight:500;letter-spacing:1px;line-height:1;
   text-transform:uppercase;color:#3A3A3A;
 }
 .footer__row{display:flex;gap:16px;margin-bottom:12px;font-size:16px;letter-spacing:.8px}
-.footer__tag{color:var(--accent);font-weight:900;letter-spacing:2.1px;min-width:56px}
+.footer__tag{color:var(--accent);font-weight:900;letter-spacing:2.1px;min-width:64px}
 .footer__legal{
   margin-top:56px;padding-top:24px;border-top:1px solid #3A3A3A;
   font-size:16px;letter-spacing:.8px;color:#7A7A7A;
@@ -189,10 +189,13 @@ a{color:inherit;text-decoration:none}
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1300px){
   .display,.hero__word,.footer__mark{font-size:56px}
+  .nav__right{gap:32px}
+  .nav__links{gap:32px}
 }
 @media (max-width:1100px){
   .nav{padding:0 32px}
-  .nav__links{gap:28px}
+  .nav__links{gap:24px}
+  .nav__right{gap:24px}
   .wrap{padding:0 32px}
   .cols{grid-template-columns:1fr;gap:32px}
   .ctx{grid-template-columns:repeat(2,1fr)}
@@ -206,6 +209,7 @@ a{color:inherit;text-decoration:none}
   :root{--nav-h:68px}
   .nav{padding:0 24px}
   .nav__toggle{display:block}
+  .nav__right{gap:12px}
   .nav__links{
     position:fixed;top:var(--nav-h);left:0;right:0;
     background:var(--white);flex-direction:column;gap:0;
@@ -215,10 +219,7 @@ a{color:inherit;text-decoration:none}
   .nav__links.is-open{max-height:320px;padding:8px 24px 24px}
   .nav__links li{border-bottom:1px solid var(--rule)}
   .nav__links a{display:block;padding:16px 0}
-  .hero{
-    grid-template-columns:1fr;
-    height:auto;min-height:0;
-  }
+  .hero{grid-template-columns:1fr;height:auto;min-height:0}
   .hero__panel{height:52vw;min-height:260px}
   .wrap{padding:0 24px}
   .section{padding-top:64px;padding-bottom:64px}
@@ -238,33 +239,44 @@ a{color:inherit;text-decoration:none}
 @media (max-width:568px){
   .display,.hero__word,.footer__mark{font-size:32px}
   .nav__brand{font-size:14px;letter-spacing:1.6px}
+  .lang__btn,.lang__sep{font-size:14px}
 }
 </style>
 </head>
 <body>
 
 <header class="nav">
-  <a href="#top" class="nav__brand">ETicketArte <span>Sistema</span></a>
-  <button class="nav__toggle" id="navToggle" aria-label="Menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav__links" id="navLinks">
-    <li><a href="#sistema">Sistema</a></li>
-    <li><a href="#autoria">Autoría</a></li>
-    <li><a href="#contextos">Contextos</a></li>
-    <li><a href="#specs">Ficha</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
+  <a href="#top" class="nav__brand">ETicketArte <span data-i18n="brandSub">System</span></a>
+
+  <div class="nav__right">
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#sistema" data-i18n="navSystem">System</a></li>
+      <li><a href="#autoria" data-i18n="navAuthorship">Authorship</a></li>
+      <li><a href="#contextos" data-i18n="navContexts">Contexts</a></li>
+      <li><a href="#specs" data-i18n="navSpecs">Specs</a></li>
+      <li><a href="#contacto" data-i18n="navContact">Contact</a></li>
+    </ul>
+
+    <div class="lang">
+      <button class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang__sep">/</span>
+      <button class="lang__btn" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <section class="hero" id="top">
   <div class="hero__panel">
-    <img src="assets/hero-1.png" alt="Impresora térmica imprimiendo un ticket-obra de ETicketArte">
-    <div class="hero__word">Máquinas</div>
+    <img src="assets/hero-1.png" data-i18n-alt="altPrinter" alt="Thermal printer producing an ETicketArte ticket-artwork">
+    <div class="hero__word" data-i18n="heroA">Sensitive</div>
   </div>
   <div class="hero__panel">
-    <img src="assets/hero-2.png" alt="Serie de tickets generativos impresos durante pruebas del sistema">
-    <div class="hero__word">Sensibles</div>
+    <img src="assets/hero-2.png" data-i18n-alt="altTickets" alt="Series of generative tickets printed during system tests">
+    <div class="hero__word" data-i18n="heroB">Machines</div>
   </div>
 </section>
 
@@ -272,47 +284,47 @@ a{color:inherit;text-decoration:none}
 
   <section class="section wrap" id="sistema">
     <div class="cols">
-      <p class="quote">Una transacción se convierte en obra. Un algoritmo, en coautor.</p>
+      <p class="quote" data-i18n="quote">A transaction becomes an artwork. An algorithm, a co-author.</p>
       <div>
-        <p class="lead">ETicketArte es un dispositivo de impresión térmica autónomo —una tiquetera de boletería reprogramada— que materializa, en cuestión de segundos, obras generativas cocreadas entre inteligencia artificial y autores humanos.</p>
-        <p class="lead">Cada vez que un espectador presiona su único botón, el sistema selecciona al azar uno de los prompts, algoritmos o conjuntos de reglas cargados en su memoria y los envía a un modelo o programa generativo. El resultado —un texto, una imagen, una partitura, una instrucción de acción— se imprime de inmediato sobre papel térmico: una pieza única, irrepetible, destinada a desaparecer.</p>
+        <p class="lead" data-i18n="lead1">ETicketArte is an autonomous thermal printing device —a reprogrammed box-office ticket printer— that materializes, in a matter of seconds, generative works co-created between artificial intelligence and human authors.</p>
+        <p class="lead" data-i18n="lead2">Each time a viewer presses its single button, the system randomly selects one of the prompts, algorithms or rule sets loaded in its memory and sends them to a generative model or program. The result —a text, an image, a score, an instruction for action— is printed immediately on thermal paper: a unique, unrepeatable piece, destined to disappear.</p>
       </div>
     </div>
   </section>
 
   <section class="section wrap section--rule">
-    <h2 class="label">Mecánica del sistema</h2>
+    <h2 class="label" data-i18n="labelMechanics">System mechanics</h2>
     <div class="cols">
       <div></div>
       <div>
         <div class="sub">
-          <h3 class="sub__title">Cómo funciona</h3>
-          <p class="lead">El corazón del dispositivo es una computadora de placa reducida que ejecuta un programa propio. Todo el sistema funciona de manera autónoma, equipado con un único botón físico. Al ser presionado, el programa selecciona al azar uno de los algoritmos cargados en su memoria y envía la instrucción a un modelo generativo —vía API— o ejecuta un algoritmo local encapsulado, sin salir a internet.</p>
+          <h3 class="sub__title" data-i18n="subHowTitle">How it works</h3>
+          <p class="lead" data-i18n="subHowBody">The core of the device is a single-board computer running custom software. The whole system operates autonomously, equipped with a single physical button. When pressed, the program randomly selects one of the algorithms loaded in its memory and sends the instruction to a generative model —via API— or runs a locally encapsulated algorithm, without going online.</p>
         </div>
         <div class="sub">
-          <h3 class="sub__title">El límite como potencia</h3>
-          <p class="lead">Lejos de perseguir la alta definición de las pantallas contemporáneas, el sistema se apoya en la extrema limitación de su hardware: resolución monocromática de 203 DPI y sólo dos colores. Esa restricción es una fortaleza poética: obliga a cada autor —humano o artificial— a una síntesis visual y conceptual absoluta. El límite técnico se vuelve un dispositivo curatorial en sí mismo.</p>
+          <h3 class="sub__title" data-i18n="subLimitTitle">The limit as power</h3>
+          <p class="lead" data-i18n="subLimitBody">Far from chasing the high definition of contemporary screens, the system leans on the extreme limitation of its hardware: monochrome resolution of 203 DPI and only two colours. That restriction is a poetic strength: it forces every author —human or artificial— into absolute visual and conceptual synthesis. The technical limit becomes a curatorial device in itself.</p>
         </div>
         <div class="sub">
-          <h3 class="sub__title">Lo efímero y la tinta térmica</h3>
-          <p class="lead">El papel térmico está condenado a degradarse por efecto de la luz y la temperatura. Esa condición no es un defecto: es su centro conceptual. El espectador recibe un instante de lucidez humano-algorítmica que se va a desvanecer, lo que invita a atesorar el momento en la memoria, no en el objeto. Producir para perder, imprimir para olvidar, y en ese olvido, recordar mejor.</p>
+          <h3 class="sub__title" data-i18n="subEphemeralTitle">The ephemeral and thermal ink</h3>
+          <p class="lead" data-i18n="subEphemeralBody">Thermal paper is doomed to degrade under light and heat. That condition is not a defect: it is its conceptual core. The viewer receives an instant of human-algorithmic lucidity that will fade, which invites treasuring the moment in memory rather than in the object. Producing to lose, printing to forget, and in that forgetting, remembering better.</p>
         </div>
       </div>
     </div>
     <div class="figure">
-      <img src="assets/hero-2.png" alt="Tickets generativos impresos durante pruebas del sistema">
-      <p class="figure__cap">Tickets generativos impresos durante pruebas del sistema.</p>
+      <img src="assets/hero-2.png" data-i18n-alt="altTickets" alt="Generative tickets printed during system tests">
+      <p class="figure__cap" data-i18n="capTickets">Generative tickets printed during system tests.</p>
     </div>
   </section>
 
   <section class="section wrap section--rule" id="autoria">
-    <h2 class="label">Arquitectura de autoría abierta</h2>
+    <h2 class="label" data-i18n="labelAuthorship">Open authorship architecture</h2>
     <div class="cols">
       <div></div>
       <div>
-        <p class="lead">El núcleo conceptual de ETicketArte no es un catálogo cerrado de autores, sino una arquitectura que se completa con quienes la habitan. Existe una línea fundacional, pero funciona como semilla, no como límite.</p>
-        <p class="lead">Cada artista, investigador, docente o institución que participe puede diseñar su propio prompt, su propio conjunto de reglas generativas o su propio dataset, y cargarlo al sistema bajo las mismas condiciones técnicas: un botón, una selección aleatoria, una impresora térmica. El dispositivo no jerarquiza autorías: todos los participantes quedan representados por un mismo formato de salida —el ticket de 203 DPI— que iguala procedencias disciplinares distintas bajo una misma condición material y temporal.</p>
-        <p class="lead">La obra final es, literalmente, la suma de quienes decidieron intervenir el sistema.</p>
+        <p class="lead" data-i18n="auth1">The conceptual core of ETicketArte is not a closed catalogue of authors, but an architecture completed by those who inhabit it. There is a founding line, but it works as a seed, not as a limit.</p>
+        <p class="lead" data-i18n="auth2">Every artist, researcher, teacher or institution taking part can design their own prompt, their own set of generative rules or their own dataset, and load it into the system under the same technical conditions: a button, a random selection, a thermal printer. The device does not hierarchize authorship: all participants are represented by the same output format —the 203 DPI ticket— which levels different disciplinary origins under one shared material and temporal condition.</p>
+        <p class="lead" data-i18n="auth3">The final work is, literally, the sum of those who chose to intervene in the system.</p>
       </div>
     </div>
 
@@ -320,99 +332,99 @@ a{color:inherit;text-decoration:none}
       <div></div>
       <div>
         <div class="sub">
-          <h3 class="sub__title">Disciplinas abiertas</h3>
-          <p class="lead">Poesía y literatura. Artes visuales y dibujo. Música y composición sonora. Arquitectura y diseño especulativo. Bioarte y ciencia. Performance y acción. Danza y coreografía. Cine y fotografía expandida. Gastronomía conceptual. Filosofía y pensamiento crítico. Diseño gráfico y tipografía. Comunicación y nuevos medios.</p>
-          <p class="lead">Un menú orientativo, no exhaustivo, de los perfiles que pueden tomar el sistema como soporte. Cada disciplina aporta su propia pregunta sobre el algoritmo, no una respuesta cerrada.</p>
+          <h3 class="sub__title" data-i18n="discTitle">Open disciplines</h3>
+          <p class="lead" data-i18n="disc1">Poetry and literature. Visual arts and drawing. Music and sound composition. Architecture and speculative design. Bioart and science. Performance and action. Dance and choreography. Film and expanded photography. Conceptual gastronomy. Philosophy and critical thought. Graphic design and typography. Communication and new media.</p>
+          <p class="lead" data-i18n="disc2">An indicative, non-exhaustive menu of the profiles that can take the system as a support. Each discipline brings its own question about the algorithm, not a closed answer.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section wrap section--rule" id="contextos">
-    <h2 class="label">Versatilidad contextual</h2>
+    <h2 class="label" data-i18n="labelContexts">Contextual versatility</h2>
     <div class="cols" style="margin-bottom:64px">
       <div></div>
       <div>
-        <p class="lead">ETicketArte no necesita una sala: necesita una boletería, un mostrador o cualquier punto donde una transacción cotidiana —comprar una entrada, un libro, un café— pueda interrumpirse con un instante de arte. El sistema es deliberadamente portátil, de bajo costo y modular: cualquier institución que disponga de un punto de venta o de acceso puede alojarlo, alimentarlo con sus propios autores y convertir su flujo de público en una audiencia de arte generativo sin proponérselo.</p>
+        <p class="lead" data-i18n="ctxLead">ETicketArte does not need a gallery: it needs a box office, a counter, or any point where an everyday transaction —buying a ticket, a book, a coffee— can be interrupted by an instant of art. The system is deliberately portable, low-cost and modular: any institution with a point of sale or access can host it, feed it with its own authors, and turn its flow of visitors into an audience for generative art without meaning to.</p>
       </div>
     </div>
 
     <div class="ctx">
       <div class="ctx__item">
         <span class="ctx__num">01</span>
-        <h3 class="ctx__name">Museos y centros de arte</h3>
-        <p class="ctx__desc">La entrada deja de ser comprobante y pasa a ser obra. Una capa generativa que acompaña la visita.</p>
+        <h3 class="ctx__name" data-i18n="ctx1Name">Museums and art centres</h3>
+        <p class="ctx__desc" data-i18n="ctx1Desc">The ticket stops being a receipt and becomes an artwork. A generative layer accompanying the visit.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">02</span>
-        <h3 class="ctx__name">Teatros y centros culturales</h3>
-        <p class="ctx__desc">La boletería se convierte en laboratorio. Cada función deja un archivo irrepetible.</p>
+        <h3 class="ctx__name" data-i18n="ctx2Name">Theatres and cultural centres</h3>
+        <p class="ctx__desc" data-i18n="ctx2Desc">The box office becomes a laboratory. Every performance leaves an unrepeatable archive.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">03</span>
-        <h3 class="ctx__name">Festivales de arte y tecnología</h3>
-        <p class="ctx__desc">Dispositivo portátil en puntos de alta circulación. Producción continua durante la programación.</p>
+        <h3 class="ctx__name" data-i18n="ctx3Name">Art and technology festivals</h3>
+        <p class="ctx__desc" data-i18n="ctx3Desc">A portable device at high-traffic points. Continuous production throughout the programme.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">04</span>
-        <h3 class="ctx__name">Universidades y laboratorios</h3>
-        <p class="ctx__desc">Herramienta pedagógica sobre hardware accesible, programación creativa e IA generativa.</p>
+        <h3 class="ctx__name" data-i18n="ctx4Name">Universities and labs</h3>
+        <p class="ctx__desc" data-i18n="ctx4Desc">A teaching tool on accessible hardware, creative coding and generative AI.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">05</span>
-        <h3 class="ctx__name">Bibliotecas y librerías</h3>
-        <p class="ctx__desc">Cada préstamo o compra incorpora una pieza breve. Literatura y algoritmo convergen.</p>
+        <h3 class="ctx__name" data-i18n="ctx5Name">Libraries and bookshops</h3>
+        <p class="ctx__desc" data-i18n="ctx5Desc">Every loan or purchase includes a short piece. Literature and algorithm converge.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">06</span>
-        <h3 class="ctx__name">Residencias y encuentros</h3>
-        <p class="ctx__desc">Autoría distribuida entre participantes. Capacidad instalada que continúa después del encuentro.</p>
+        <h3 class="ctx__name" data-i18n="ctx6Name">Residencies and gatherings</h3>
+        <p class="ctx__desc" data-i18n="ctx6Desc">Authorship distributed among participants. Installed capacity that outlives the event.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">07</span>
-        <h3 class="ctx__name">Gastronomía y comercio</h3>
-        <p class="ctx__desc">El recibo se reconfigura como objeto estético. Una obra junto a cada consumo.</p>
+        <h3 class="ctx__name" data-i18n="ctx7Name">Gastronomy and retail</h3>
+        <p class="ctx__desc" data-i18n="ctx7Desc">The receipt is reconfigured as an aesthetic object. An artwork alongside each purchase.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">08</span>
-        <h3 class="ctx__name">Espacios de tránsito</h3>
-        <p class="ctx__desc">Estaciones, ferias, congresos. Arte que interrumpe el flujo sin pedir permiso.</p>
+        <h3 class="ctx__name" data-i18n="ctx8Name">Transit spaces</h3>
+        <p class="ctx__desc" data-i18n="ctx8Desc">Stations, fairs, conferences. Art that interrupts the flow without asking permission.</p>
       </div>
       <div class="ctx__item">
         <span class="ctx__num">09</span>
-        <h3 class="ctx__name">Activaciones de marca</h3>
-        <p class="ctx__desc">Un gesto gratuito en medio de la transacción. Memoria material, no descartable.</p>
+        <h3 class="ctx__name" data-i18n="ctx9Name">Brand activations</h3>
+        <p class="ctx__desc" data-i18n="ctx9Desc">A free gesture in the middle of the transaction. Material memory, not disposable.</p>
       </div>
     </div>
   </section>
 
   <section class="section wrap section--rule" id="specs">
-    <h2 class="label">Ficha técnica</h2>
+    <h2 class="label" data-i18n="labelSpecs">Technical sheet</h2>
     <div class="cols">
       <div></div>
       <div class="spec">
-        <div class="spec__row"><span class="spec__key">Control</span><span class="spec__val">Computadora de placa reducida</span></div>
-        <div class="spec__row"><span class="spec__key">Software</span><span class="spec__val">Programa propio en Python</span></div>
-        <div class="spec__row"><span class="spec__key">Salida</span><span class="spec__val">Impresora térmica USB · 203 DPI</span></div>
-        <div class="spec__row"><span class="spec__key">Interfaz</span><span class="spec__val">Botón pulsador físico, único punto de interacción</span></div>
-        <div class="spec__row"><span class="spec__key">Generación</span><span class="spec__val">API de modelo generativo, o algoritmo local offline</span></div>
-        <div class="spec__row"><span class="spec__key">Color</span><span class="spec__val">Monocromo, dos valores</span></div>
-        <div class="spec__row"><span class="spec__key">Soporte</span><span class="spec__val">Papel térmico · degradación progresiva</span></div>
-        <div class="spec__row"><span class="spec__key">Montaje</span><span class="spec__val">Modular, portátil, replicable</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK1">Control</span><span class="spec__val" data-i18n="specV1">Single-board computer</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK2">Software</span><span class="spec__val" data-i18n="specV2">Custom program in Python</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK3">Output</span><span class="spec__val" data-i18n="specV3">USB thermal printer · 203 DPI</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK4">Interface</span><span class="spec__val" data-i18n="specV4">Physical push button, single point of interaction</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK5">Generation</span><span class="spec__val" data-i18n="specV5">Generative model API, or local offline algorithm</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK6">Colour</span><span class="spec__val" data-i18n="specV6">Monochrome, two values</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK7">Medium</span><span class="spec__val" data-i18n="specV7">Thermal paper · progressive fading</span></div>
+        <div class="spec__row"><span class="spec__key" data-i18n="specK8">Assembly</span><span class="spec__val" data-i18n="specV8">Modular, portable, replicable</span></div>
       </div>
     </div>
     <div class="figure">
-      <img src="assets/hero-1.png" alt="Detalle del dispositivo ETicketArte en funcionamiento">
-      <p class="figure__cap">El dispositivo en funcionamiento: el ticket como obra, no como comprobante.</p>
+      <img src="assets/hero-1.png" data-i18n-alt="altPrinter" alt="Detail of the ETicketArte device in operation">
+      <p class="figure__cap" data-i18n="capPrinter">The device in operation: the ticket as artwork, not as receipt.</p>
     </div>
   </section>
 
   <section class="section wrap section--rule" id="contacto">
     <div class="cols">
-      <h2 class="display" style="margin:0">Colaborar</h2>
+      <h2 class="display" style="margin:0" data-i18n="ctaTitle">Collaborate</h2>
       <div>
-        <p class="lead">Artistas, investigadores, curadores, museos, festivales e instituciones culturales: ETicketArte es una plataforma abierta. Si tu espacio tiene un punto de acceso —una boletería, un mostrador, una entrada— el sistema puede alojarse allí y alimentarse con tus propios autores.</p>
-        <p class="lead" style="margin-bottom:40px">Escribinos para proponer una activación, un taller o una residencia.</p>
+        <p class="lead" data-i18n="cta1">Artists, researchers, curators, museums, festivals and cultural institutions: ETicketArte is an open platform. If your venue has a point of access —a box office, a counter, an entrance— the system can be hosted there and fed with your own authors.</p>
+        <p class="lead" style="margin-bottom:40px" data-i18n="cta2">Write to us to propose an activation, a workshop or a residency.</p>
         <a class="link" href="mailto:oliverio.duhalde@gmail.com">oliverio.duhalde@gmail.com</a>
       </div>
     </div>
@@ -425,28 +437,128 @@ a{color:inherit;text-decoration:none}
     <div class="footer__grid">
       <div class="footer__mark">ETicketArte</div>
       <div>
-        <div class="footer__row"><span class="footer__tag">Mail</span><a href="mailto:oliverio.duhalde@gmail.com">oliverio.duhalde@gmail.com</a></div>
-        <div class="footer__row"><span class="footer__tag">Web</span><span>www.eticketarte.com</span></div>
-        <div class="footer__row"><span class="footer__tag">Autor</span><span>Oliverio Duhalde</span></div>
+        <div class="footer__row"><span class="footer__tag" data-i18n="ftMail">Mail</span><a href="mailto:oliverio.duhalde@gmail.com">oliverio.duhalde@gmail.com</a></div>
+        <div class="footer__row"><span class="footer__tag" data-i18n="ftWeb">Web</span><span>www.eticketarte.com</span></div>
+        <div class="footer__row"><span class="footer__tag" data-i18n="ftAuthor">Author</span><span>Oliverio Duhalde</span></div>
         <div style="margin-top:32px">
-          <a class="link link--light" href="mailto:oliverio.duhalde@gmail.com">Proponer una activación</a>
+          <a class="link link--light" href="mailto:oliverio.duhalde@gmail.com" data-i18n="ftCta">Propose an activation</a>
         </div>
       </div>
     </div>
-    <p class="footer__legal">ETicketArte © 2026 · Máquinas sensibles de bolsillo · Un sistema de impresión térmica autónomo para la autoría compartida entre inteligencia artificial y artistas.</p>
+    <p class="footer__legal" data-i18n="ftLegal">ETicketArte © 2026 · Sensitive pocket machines · An autonomous thermal printing system for shared authorship between artificial intelligence and artists.</p>
   </div>
 </footer>
 
 <script>
 (function(){
-  var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
-  t.addEventListener('click',function(){
-    var open=l.classList.toggle('is-open');
-    t.setAttribute('aria-expanded',open);
+
+var I18N = {
+  es: {
+    title:"ETicketArte | Máquinas Sensibles de Bolsillo",
+    desc:"Un sistema de impresión térmica autónomo para la autoría compartida entre inteligencia artificial y artistas. Una transacción se convierte en obra.",
+    brandSub:"Sistema",
+    navSystem:"Sistema", navAuthorship:"Autoría", navContexts:"Contextos", navSpecs:"Ficha", navContact:"Contacto",
+    heroA:"Máquinas", heroB:"Sensibles",
+    altPrinter:"Impresora térmica imprimiendo un ticket-obra de ETicketArte",
+    altTickets:"Serie de tickets generativos impresos durante pruebas del sistema",
+    quote:"Una transacción se convierte en obra. Un algoritmo, en coautor.",
+    lead1:"ETicketArte es un dispositivo de impresión térmica autónomo —una tiquetera de boletería reprogramada— que materializa, en cuestión de segundos, obras generativas cocreadas entre inteligencia artificial y autores humanos.",
+    lead2:"Cada vez que un espectador presiona su único botón, el sistema selecciona al azar uno de los prompts, algoritmos o conjuntos de reglas cargados en su memoria y los envía a un modelo o programa generativo. El resultado —un texto, una imagen, una partitura, una instrucción de acción— se imprime de inmediato sobre papel térmico: una pieza única, irrepetible, destinada a desaparecer.",
+    labelMechanics:"Mecánica del sistema",
+    subHowTitle:"Cómo funciona",
+    subHowBody:"El corazón del dispositivo es una computadora de placa reducida que ejecuta un programa propio. Todo el sistema funciona de manera autónoma, equipado con un único botón físico. Al ser presionado, el programa selecciona al azar uno de los algoritmos cargados en su memoria y envía la instrucción a un modelo generativo —vía API— o ejecuta un algoritmo local encapsulado, sin salir a internet.",
+    subLimitTitle:"El límite como potencia",
+    subLimitBody:"Lejos de perseguir la alta definición de las pantallas contemporáneas, el sistema se apoya en la extrema limitación de su hardware: resolución monocromática de 203 DPI y sólo dos colores. Esa restricción es una fortaleza poética: obliga a cada autor —humano o artificial— a una síntesis visual y conceptual absoluta. El límite técnico se vuelve un dispositivo curatorial en sí mismo.",
+    subEphemeralTitle:"Lo efímero y la tinta térmica",
+    subEphemeralBody:"El papel térmico está condenado a degradarse por efecto de la luz y la temperatura. Esa condición no es un defecto: es su centro conceptual. El espectador recibe un instante de lucidez humano-algorítmica que se va a desvanecer, lo que invita a atesorar el momento en la memoria, no en el objeto. Producir para perder, imprimir para olvidar, y en ese olvido, recordar mejor.",
+    capTickets:"Tickets generativos impresos durante pruebas del sistema.",
+    labelAuthorship:"Arquitectura de autoría abierta",
+    auth1:"El núcleo conceptual de ETicketArte no es un catálogo cerrado de autores, sino una arquitectura que se completa con quienes la habitan. Existe una línea fundacional, pero funciona como semilla, no como límite.",
+    auth2:"Cada artista, investigador, docente o institución que participe puede diseñar su propio prompt, su propio conjunto de reglas generativas o su propio dataset, y cargarlo al sistema bajo las mismas condiciones técnicas: un botón, una selección aleatoria, una impresora térmica. El dispositivo no jerarquiza autorías: todos los participantes quedan representados por un mismo formato de salida —el ticket de 203 DPI— que iguala procedencias disciplinares distintas bajo una misma condición material y temporal.",
+    auth3:"La obra final es, literalmente, la suma de quienes decidieron intervenir el sistema.",
+    discTitle:"Disciplinas abiertas",
+    disc1:"Poesía y literatura. Artes visuales y dibujo. Música y composición sonora. Arquitectura y diseño especulativo. Bioarte y ciencia. Performance y acción. Danza y coreografía. Cine y fotografía expandida. Gastronomía conceptual. Filosofía y pensamiento crítico. Diseño gráfico y tipografía. Comunicación y nuevos medios.",
+    disc2:"Un menú orientativo, no exhaustivo, de los perfiles que pueden tomar el sistema como soporte. Cada disciplina aporta su propia pregunta sobre el algoritmo, no una respuesta cerrada.",
+    labelContexts:"Versatilidad contextual",
+    ctxLead:"ETicketArte no necesita una sala: necesita una boletería, un mostrador o cualquier punto donde una transacción cotidiana —comprar una entrada, un libro, un café— pueda interrumpirse con un instante de arte. El sistema es deliberadamente portátil, de bajo costo y modular: cualquier institución que disponga de un punto de venta o de acceso puede alojarlo, alimentarlo con sus propios autores y convertir su flujo de público en una audiencia de arte generativo sin proponérselo.",
+    ctx1Name:"Museos y centros de arte", ctx1Desc:"La entrada deja de ser comprobante y pasa a ser obra. Una capa generativa que acompaña la visita.",
+    ctx2Name:"Teatros y centros culturales", ctx2Desc:"La boletería se convierte en laboratorio. Cada función deja un archivo irrepetible.",
+    ctx3Name:"Festivales de arte y tecnología", ctx3Desc:"Dispositivo portátil en puntos de alta circulación. Producción continua durante la programación.",
+    ctx4Name:"Universidades y laboratorios", ctx4Desc:"Herramienta pedagógica sobre hardware accesible, programación creativa e IA generativa.",
+    ctx5Name:"Bibliotecas y librerías", ctx5Desc:"Cada préstamo o compra incorpora una pieza breve. Literatura y algoritmo convergen.",
+    ctx6Name:"Residencias y encuentros", ctx6Desc:"Autoría distribuida entre participantes. Capacidad instalada que continúa después del encuentro.",
+    ctx7Name:"Gastronomía y comercio", ctx7Desc:"El recibo se reconfigura como objeto estético. Una obra junto a cada consumo.",
+    ctx8Name:"Espacios de tránsito", ctx8Desc:"Estaciones, ferias, congresos. Arte que interrumpe el flujo sin pedir permiso.",
+    ctx9Name:"Activaciones de marca", ctx9Desc:"Un gesto gratuito en medio de la transacción. Memoria material, no descartable.",
+    labelSpecs:"Ficha técnica",
+    specK1:"Control", specV1:"Computadora de placa reducida",
+    specK2:"Software", specV2:"Programa propio en Python",
+    specK3:"Salida", specV3:"Impresora térmica USB · 203 DPI",
+    specK4:"Interfaz", specV4:"Botón pulsador físico, único punto de interacción",
+    specK5:"Generación", specV5:"API de modelo generativo, o algoritmo local offline",
+    specK6:"Color", specV6:"Monocromo, dos valores",
+    specK7:"Soporte", specV7:"Papel térmico · degradación progresiva",
+    specK8:"Montaje", specV8:"Modular, portátil, replicable",
+    capPrinter:"El dispositivo en funcionamiento: el ticket como obra, no como comprobante.",
+    ctaTitle:"Colaborar",
+    cta1:"Artistas, investigadores, curadores, museos, festivales e instituciones culturales: ETicketArte es una plataforma abierta. Si tu espacio tiene un punto de acceso —una boletería, un mostrador, una entrada— el sistema puede alojarse allí y alimentarse con tus propios autores.",
+    cta2:"Escribinos para proponer una activación, un taller o una residencia.",
+    ftMail:"Mail", ftWeb:"Web", ftAuthor:"Autor",
+    ftCta:"Proponer una activación",
+    ftLegal:"ETicketArte © 2026 · Máquinas sensibles de bolsillo · Un sistema de impresión térmica autónomo para la autoría compartida entre inteligencia artificial y artistas."
+  }
+};
+
+// English is the default: capture it straight from the markup so there is
+// only ever one source of truth for the EN copy.
+var EN = {};
+document.querySelectorAll('[data-i18n]').forEach(function(el){
+  EN[el.getAttribute('data-i18n')] = el.innerHTML;
+});
+document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+  EN[el.getAttribute('data-i18n-alt')] = el.getAttribute('alt');
+});
+EN.title = document.title;
+EN.desc = document.getElementById('metaDesc').getAttribute('content');
+I18N.en = EN;
+
+function apply(lang){
+  var d = I18N[lang] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(d[k] !== undefined) el.innerHTML = d[k];
   });
-  l.addEventListener('click',function(e){
-    if(e.target.tagName==='A')l.classList.remove('is-open');
+  document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-alt');
+    if(d[k] !== undefined) el.setAttribute('alt', d[k]);
   });
+  if(d.title) document.title = d.title;
+  if(d.desc) document.getElementById('metaDesc').setAttribute('content', d.desc);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang__btn').forEach(function(b){
+    b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+  });
+  try{ localStorage.setItem('eta-lang', lang); }catch(e){}
+}
+
+document.querySelectorAll('.lang__btn').forEach(function(b){
+  b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); });
+});
+
+// Restore a previous choice. English stays the default for first-time visitors.
+var saved;
+try{ saved = localStorage.getItem('eta-lang'); }catch(e){}
+if(saved && saved !== 'en') apply(saved);
+
+// mobile menu
+var t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
+t.addEventListener('click', function(){
+  t.setAttribute('aria-expanded', String(l.classList.toggle('is-open')));
+});
+l.addEventListener('click', function(e){
+  if(e.target.tagName === 'A') l.classList.remove('is-open');
+});
+
 })();
 </script>
 
